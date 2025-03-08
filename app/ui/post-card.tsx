@@ -8,12 +8,16 @@ import {
 import { ChatBubbleLeftRightIcon, CalendarIcon, HeartIcon } from "@heroicons/react/24/solid";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { inter } from '@/app/ui/fonts'
+import LikeButton from '@/app/ui/like-button'
+import CommentButton from "@/app/ui/comment-button";
+import FollowButton from "@/app/ui/follow-button";
 
 
 export function PostCard({ Post }: { Post: postCard } ) {
 
   return (
-    <Card className='md:block w-auto shadow-2xl'>
+    <Card className={`md:block w-auto shadow-2xl ${inter.className}`}>
       <CardHeader>
         <CardTitle className='flex flex-row items-center gap-1.5 text-lg'>
           {/* TODO add profile link to header */}
@@ -26,10 +30,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
               alt={'image'} />
             {Post.post_owner}
             {/* TODO following button add functionality */}
-            <span className='ml-80 flex flex-row text-muted-foreground gap-1.5 text-sm border-2 rounded-xl border-gray-600 p-1'>
-              {/* TODO (following) ? (<CheckCircleIcon className='w-5'/> Following) : (<Button /> Follow) */}
-              <CheckCircleIcon className='w-5'/> Following
-            </span>
+            <FollowButton />
           </div>
         </CardTitle>
       </CardHeader>
@@ -37,7 +38,10 @@ export function PostCard({ Post }: { Post: postCard } ) {
         <div>
           <div className="mb-4 grid grid-cols-[600px_1fr] items-start pb-4 last:mb-0 last:pb-0">
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground flex justify-center">
+              <p className='text-lg flex border-t-2 mt-5 pt-2 whitespace-normal'>
+                { Post.message }
+              </p>
+              <div className="text-sm flex justify-center">
                 { Post.image_url && (
                   <Image
                     src={Post.image_url}
@@ -46,20 +50,15 @@ export function PostCard({ Post }: { Post: postCard } ) {
                     alt={'image'}
                   />
                 )}
-              </p>
+              </div>
               <div className="flex flex-row items-center justify-between mx-4">
                 <div className="flex justify-begin text-muted-foreground gap-3">
                   {/*TODO Date calculate: today, yesterday, a week ago etc..*/}
                   <CalendarIcon className='w-5'/> {Post.date}
                 </div>
-                <div className="flex flex-row justify-end gap-4">
-                  <p className="text-base text-muted-foreground flex gap-1">
-                    {/* TODO Button to like */}
-                    <HeartIcon className="w-5"/> {Post.likes}
-                  </p>
-                  <p className="text-base text-muted-foreground flex gap-1">
-                    <ChatBubbleLeftRightIcon className="w-5" /> {Post.comments}
-                  </p>
+                <div className="flex flex-row justify-end gap-2">
+                  <LikeButton likes={Post.likes} />
+                  <CommentButton comments={Post.comments} />
                 </div>
               </div>
             </div>

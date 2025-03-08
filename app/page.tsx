@@ -7,10 +7,11 @@ const exPost: postCard = {
   post_owner: 'Kaan Yazici',
   owner_url: '/customers/evil-rabbit.png',
   image_url: '/graph.png',
-  message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
-    'Proin eget enim mi. Duis varius leo augue, et maximus nisl venenatis vitae. ' +
-    'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ' +
-    'Vestibulum ut urna nec nibh tempus varius. Sed auctor varius eros, sed facilisis ipsum interdum porta.',
+  message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+    Proin eget enim mi. Duis varius leo augue, et maximus nisl venenatis vitae. \
+    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\
+    Vestibulum ut urna nec nibh tempus varius. Sed auctor varius eros, sed facilisis ipsum interdum porta.\
+    hellllllllllllllllllllllllllllllllllllllloooooooooooooooooooooooooooooo',
   date: '03/03/2025',
   likes: 10,
   comments: 1};
