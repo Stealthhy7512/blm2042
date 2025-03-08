@@ -12,6 +12,7 @@ import { inter } from '@/app/ui/fonts'
 import LikeButton from '@/app/ui/like-button'
 import CommentButton from "@/app/ui/comment-button";
 import FollowButton from "@/app/ui/follow-button";
+import Link from "next/link";
 
 
 export function PostCard({ Post }: { Post: postCard } ) {
@@ -22,16 +23,20 @@ export function PostCard({ Post }: { Post: postCard } ) {
         <CardTitle className='flex flex-row items-center gap-1.5 text-lg'>
           {/* TODO add profile link to header */}
           <div className='flex flex-row items-center gap-1.5'>
-            <Image
-              src={Post.owner_url}
-              className="mr-2 rounded-full"
-              width={48}
-              height={48}
-              alt={'image'} />
-            {Post.post_owner}
+            <Link href={`/${Post.id}`} className='flex flex-row items-center gap-1.5'>
+              <Image
+                src={Post.owner_url}
+                className="mr-2 rounded-full"
+                width={48}
+                height={48}
+                alt={'image'} />
+              {Post.post_owner}
+            </Link>
             {/* TODO following button add functionality */}
             <FollowButton />
           </div>
+
+
         </CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
