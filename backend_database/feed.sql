@@ -1,21 +1,5 @@
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "",
-    "css": "app/globals.css",
-    "baseColor": "neutral",
-    "cssVariables": true,
-    "prefix": ""
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
-  },
-  "iconLibrary": "lucide"
-}
+FEED WEIGHT
+
+
+Science [0, 0, 0, 0, 0, 1]
+Sport [0, 0, 0, 0, 1, 0]
