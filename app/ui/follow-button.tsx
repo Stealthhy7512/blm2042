@@ -9,7 +9,7 @@ export default function FollowButton() {
 
   }
   return (
-    <Button variant='outline' onClick={handleClick} className='ml-80 flex flex-row text-muted-foreground gap-1.5 text-sm border-2 rounded-xl border-gray-600 p-1'>
+    <Button variant='outline' onClick={handleClick} className='flex flex-row text-muted-foreground gap-1.5 text-sm border-2 rounded-xl border-gray-600 p-1'>
       {/* TODO (following) ? (<CheckCircleIcon className='w-5'/> Following) : (<Button /> Follow) */}
       <CheckCircleIcon className='w-4'/> Following
     </Button>

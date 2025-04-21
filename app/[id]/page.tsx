@@ -16,6 +16,7 @@ export default function Home(props: { params: { id: string}}) {
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen p-4">
       <div className="mx-auto">
+
         <ProfileHeader user={user} />
       
         <div className="flex items-center flex-col gap-y-[64px] justify-center text-black mt-4">
