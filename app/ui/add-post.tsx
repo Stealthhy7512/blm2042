@@ -27,29 +27,39 @@ export default function PostForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto p-4 bg-white rounded-lg shadow-sm">
+      {/* Mesaj Textarea */}
       <textarea
-        className="w-full p-2 border rounded"
+        className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
         placeholder="Ne düşünüyorsun?"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        rows={4}
+        rows={3}
         required
       />
 
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files?.[0] || null)}
-      />
+      {/* Dosya Seçme */}
+      <div className="flex items-center justify-between gap-2">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files?.[0] || null)}
+          className="file:mr-2 file:py-1 file:px-3 file:rounded-md file:border file:bg-blue-50 file:text-blue-600 text-sm cursor-pointer"
+        />
+        {image && (
+          <span className="text-xs text-gray-500 truncate max-w-[150px]">
+            {image.name}
+          </span>
+        )}
+      </div>
 
+      {/* Gönder Butonu */}
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-all text-sm"
       >
         Gönder
       </button>
     </form>
   );
 }
-    
