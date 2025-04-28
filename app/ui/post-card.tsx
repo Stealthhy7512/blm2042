@@ -1,3 +1,5 @@
+'use client';
+
 import { postCard } from '@/app/lib/definitions';
 import {
   Dialog,
@@ -26,7 +28,7 @@ import Link from "next/link";
 export function PostCard({ Post }: { Post: postCard } ) {
 
   return (
-    <Card className={`md:block w-auto shadow-2xl ${inter.className}`}>
+    <Card className={`md:block w-auto shadow-2xl ${inter.className} transition-all duration-300 hover:shadow-xl`}>
       <CardHeader>
         <CardTitle className='flex items-center gap-1.5 text-lg'>
           <div className='flex items-center w-full justify-between gap-3 px-1.5'>
@@ -61,6 +63,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                         width={500}
                         height={500}
                         alt={'image'}
+                        className="rounded-lg border-2 border-gray-200 hover:border-blue-500 transition-all"
                       />
                     )}
                   </div>
@@ -71,13 +74,14 @@ export function PostCard({ Post }: { Post: postCard } ) {
                   <div className="flex flex-col md:flex-row w-full h-[90vh] overflow-hidden">
 
                     {/* Left: Image */}
-                    <div className=" flex justify-center items-center md:w-auto">
+                    <div className="flex justify-center items-center md:w-auto">
                       {Post.image_url && (
                         <Image
                           src={Post.image_url}
                           alt="post image"
                           width={500}
                           height={500}
+                          className="rounded-lg"
                         />
                       )}
                     </div>
@@ -99,34 +103,24 @@ export function PostCard({ Post }: { Post: postCard } ) {
                           <FollowButton />
                         </div>
                         <p className="text-sm">{Post.message}</p>
-                        <div className="flex justify-begin text-sm text-muted-foreground gap-3 mt-2">
+                        <div className="flex justify-start text-sm text-muted-foreground gap-3 mt-2">
                           <CalendarIcon className='w-4' /> {Post.date}
                         </div>
                       </div>
 
-                      {/*
-                      Example random comments
-                      TODO: should be fetched from db
-                      */}
+                      {/* Comments */}
                       <div className="flex-1 overflow-y-auto scrollbar-hide p-4 space-y-2">
                         {Array.from({ length: 15 }, (_, i) => (
-                          <p key={i} className="text-sm">
+                          <p key={i} className="text-sm text-gray-700">
                             <strong>@user{i}</strong> This is comment #{i + 1}
                           </p>
                         ))}
                       </div>
 
-                      {/*
-                      Comment input
-                      TODO: add backend functionality
-                      */}
-                      <div className="border-t p-4 shrink-0 flex flex-row">
-                        <Textarea placeholder="Add a comment..." className="mb-2" />
-                        <div className="flex flex-col">
-                          <Button type="submit" className="w-auto">Post Comment</Button>
-                          <LikeButton likes={Post.likes} />
-                        </div>
-
+                      {/* Comment input */}
+                      <div className="border-t p-4 shrink-0 flex flex-row space-x-2">
+                        <Textarea placeholder="Add a comment..." className="w-full mb-2" />
+                        <Button type="submit" className="w-auto">Post Comment</Button>
                       </div>
                     </div>
                   </div>
@@ -135,7 +129,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
             </div>
 
             <div className="flex flex-row items-center justify-between mx-4">
-              <div className="flex justify-begin text-muted-foreground gap-3">
+              <div className="flex justify-start text-muted-foreground gap-3">
                 <CalendarIcon className='w-5' /> {Post.date}
               </div>
               <div className="flex flex-row justify-end gap-2">
