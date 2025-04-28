@@ -11,8 +11,9 @@ interface User {
   profilePic: string;
   banner: string
 }
-
-export default async function Home(props: { params: { id: string } }) {
+// FIXME: takes id as parameter then fetches user info with that id
+// props: { params: { id: string } }
+export default async function Home() {
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen p-4">
       <div className="mx-auto">
