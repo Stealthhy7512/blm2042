@@ -20,7 +20,7 @@ function ProfileHeader({ user }: ProfileHeaderVariables) {
     <div className="bg-white shadow-md rounded-lg overflow-hidden mx-auto max-w-3xl">
       {/* Banner */}
       <div
-        className="h-48 bg-gray-300 relative"
+        className="h-48 bg-gray-300 relative rounded-t-lg"
         style={{
           backgroundImage: `url(${user.banner})`,
           backgroundSize: "cover",
@@ -32,17 +32,17 @@ function ProfileHeader({ user }: ProfileHeaderVariables) {
           <img
             src={user.profilePic}
             alt="Profile"
-            className="w-24 h-24 rounded-full border-4 border-white object-cover"
+            className="w-28 h-28 rounded-full border-4 border-white object-cover shadow-md"
           />
         </div>
       </div>
 
       {/* Bilgiler */}
-      <div className="pt-16 px-4 pb-4">
+      <div className="pt-20 px-4 pb-4">
         <div className="flex justify-between items-start">
           <div>
-            <h2 className="text-xl font-bold">{user.displayName}</h2>
-            <p className="text-gray-600">@{user.username}</p>
+            <h2 className="text-2xl font-semibold text-gray-800">{user.displayName}</h2>
+            <p className="text-sm text-gray-600">@{user.username}</p>
           </div>
 
           {/* Butonlar */}
@@ -50,12 +50,12 @@ function ProfileHeader({ user }: ProfileHeaderVariables) {
             {user.isCurrentUser ? (
               <>
                 <Link href="/settings">
-                  <button className="px-3 py-1 border rounded text-sm hover:bg-gray-100">
+                  <button className="px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-200 transition">
                     Ayarlar
                   </button>
                 </Link>
                 <Link href="/create-post">
-                  <button className="px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">
+                  <button className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition">
                     Yeni Gönderi
                   </button>
                 </Link>
@@ -70,7 +70,7 @@ function ProfileHeader({ user }: ProfileHeaderVariables) {
         </div>
 
         {/* Sayaçlar */}
-        <div className="mt-4 flex justify-around text-center">
+        <div className="mt-6 flex justify-around text-center">
           <div>
             <p className="text-lg font-bold">{user.postNumber}</p>
             <p className="text-sm text-gray-600">Posts</p>
