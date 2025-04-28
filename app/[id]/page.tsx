@@ -12,7 +12,7 @@ interface User {
   banner: string
 }
 
-export default function Home(props: { params: { id: string}}) {
+export default async function Home(props: { params: { id: string } }) {
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen p-4">
       <div className="mx-auto">
