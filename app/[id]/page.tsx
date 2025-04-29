@@ -12,7 +12,7 @@ interface User {
   banner: string;
 }
 
-export default function Home(props: { params: { id: string } }) {
+export default function Home({ params }: { params: { id: string } }) {
   // Giriş yapmış kullanıcının bilgileri
   const user: User = {
     displayName: "Ahmet",
