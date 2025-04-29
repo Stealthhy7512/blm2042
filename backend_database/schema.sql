@@ -1,17 +1,12 @@
 -- USER Table
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-    user_name VARCHAR(255) NOT NULL,
+    name_surname VARCHAR(255) NOT NULL,
+    username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     user_password VARCHAR(255) NOT NULL,
     profile_photo_url TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- SETTINGS Table
-CREATE TABLE settings (
-    user_id INTEGER PRIMARY KEY REFERENCES users(user_id) ON DELETE CASCADE
-    -- settings
 );
 
 -- CATEGORY Table
@@ -37,11 +32,18 @@ CREATE TABLE post (
     visibility boolean 
 );
 
+-- Post belongs to 0-N category 
+CREATE TABLE post_category (
+    post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
+    category_id INTEGER REFERENCES category(category_id) ON DELETE CASCADE,
+    PRIMARY KEY (post_id, category_id)
+);
+	
 -- MEDIA Table / post basi 1 fotograf (varsa)
 CREATE TABLE media (
-  media_url TEXT NOT NULL,
-	post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
-	PRIMARY KEY(post_id)
+    media_url TEXT NOT NULL,
+    post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
+    PRIMARY KEY(post_id)
 );
 
 -- COMMENT Table
