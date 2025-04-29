@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";  // ToggleGroup'ı import ettik
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { tags } from "@/app/lib/definitions";
+// ToggleGroup'ı import ettik
 
 export default function SignUpPage() {
-  const tags = ['Technology', 'Sports', 'Gaming', 'Music', 'Art', 'Photography', 'Animals', 'Learning'];
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-3">
@@ -13,6 +14,11 @@ export default function SignUpPage() {
           <input
             type="text"
             placeholder="Username"
+            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
+          />
+          <input
+            type="text"
+            placeholder="Name"
             className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
           />
           <input
@@ -28,7 +34,7 @@ export default function SignUpPage() {
           
           {/* Interest Section */}
           <div className="mt-6">
-            <p className="text-lg font-semibold text-gray-700 mb-4">Select your interests</p>
+            <p className="text-lg font-semibold text-gray-700 mb-4">What are you interested in?</p>
             <ToggleGroup type="multiple" className="flex flex-wrap gap-4">
               {tags.map(tag => (
                 <ToggleGroupItem

@@ -32,14 +32,14 @@ export function PostCard({ Post }: { Post: postCard } ) {
       <CardHeader>
         <CardTitle className='flex items-center gap-1.5 text-lg'>
           <div className='flex items-center w-full justify-between gap-3 px-1.5'>
-            <Link href={`/${Post.id}`} className='flex flex-row items-center gap-1.5'>
+            <Link href={`/${Post.owner_username}`} className='flex flex-row items-center gap-1.5'>
               <Image
-                src={Post.owner_url}
+                src={Post.owner_image_url}
                 className="mr-2 rounded-full"
                 width={48}
                 height={48}
                 alt={'image'} />
-              {Post.post_owner}
+              {Post.owner_name}
             </Link>
             <FollowButton />
           </div>
@@ -57,9 +57,9 @@ export function PostCard({ Post }: { Post: postCard } ) {
               <Dialog>
                 <DialogTrigger asChild>
                   <div className="cursor-pointer">
-                    {Post.image_url && (
+                    {Post.content_image_url && (
                       <Image
-                        src={Post.image_url}
+                        src={Post.content_image_url}
                         width={500}
                         height={500}
                         alt={'image'}
@@ -75,9 +75,9 @@ export function PostCard({ Post }: { Post: postCard } ) {
 
                     {/* Left: Image */}
                     <div className="flex justify-center items-center md:w-auto">
-                      {Post.image_url && (
+                      {Post.content_image_url && (
                         <Image
-                          src={Post.image_url}
+                          src={Post.content_image_url}
                           alt="post image"
                           width={500}
                           height={500}
@@ -91,14 +91,14 @@ export function PostCard({ Post }: { Post: postCard } ) {
                       {/* Top: Poster and caption */}
                       <div className="p-4 pb-2 border-b">
                         <div className="flex items-center justify-between gap-3 mb-2 pr-10">
-                          <Link href={`/${Post.id}`} className='flex flex-row items-center gap-1.5 text-lg'>
+                          <Link href={`/${Post.owner_username}`} className='flex flex-row items-center gap-1.5 text-lg'>
                             <Image
-                              src={Post.owner_url}
+                              src={Post.owner_image_url}
                               className="mr-2 rounded-full"
                               width={48}
                               height={48}
                               alt={'image'} />
-                            {Post.post_owner}
+                            {Post.owner_name}
                           </Link>
                           <FollowButton />
                         </div>

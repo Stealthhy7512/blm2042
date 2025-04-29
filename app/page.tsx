@@ -7,10 +7,10 @@ import { postCard } from "@/app/lib/definitions";
 // Örnek post verisi
 const posts: postCard[] = [
   {
-    id: "1",
-    post_owner: "Kaan Yazici",
-    owner_url: "/customers/evil-rabbit.png",
-    image_url: "/graph.png",
+    owner_username: "kaanyazici",
+    owner_name: "Kaan Yazici",
+    owner_image_url: "/customers/evil-rabbit.png",
+    content_image_url: "/graph.png",
     message:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget enim mi. Duis varius leo augue, et maximus nisl venenatis vitae.",
     date: "03/03/2025",
@@ -18,10 +18,10 @@ const posts: postCard[] = [
     comments: 1,
   },
   {
-    id: "2",
-    post_owner: "Ali Veli",
-    owner_url: "/customers/ali-avatar.png",
-    image_url: "/nature.jpg",
+    owner_username: "ali_veli",
+    owner_name: "Ali Veli",
+    owner_image_url: "/customers/ali-avatar.png",
+    content_image_url: "/nature.jpg",
     message:
       "Sed auctor varius eros, sed facilisis ipsum interdum porta. Aliquam erat volutpat. Phasellus et ligula eu nulla.",
     date: "04/03/2025",
@@ -29,10 +29,10 @@ const posts: postCard[] = [
     comments: 5,
   },
   {
-    id: "3",
-    post_owner: "Murat Yılmaz",
-    owner_url: "/customers/murat-avatar.png",
-    image_url: "/cityscape.jpg",
+    owner_username: "muratYilmaz",
+    owner_name: "Murat Yılmaz",
+    owner_image_url: "/customers/murat-avatar.png",
+    content_image_url: "/cityscape.jpg",
     message:
       "Vestibulum ut urna nec nibh tempus varius. Sed auctor varius eros, sed facilisis ipsum interdum porta. Curabitur accumsan metus.",
     date: "05/03/2025",
@@ -79,7 +79,7 @@ export default function Home() {
       <div className="w-full max-w-2xl space-y-8">
         {/* Dinamik olarak filtrelenmiş postları map ile listeleme */}
         {filteredPosts.map(post => (
-          <PostCard key={post.id} Post={post} />
+          <PostCard key={post.owner_username} Post={post} />
         ))}
       </div>
     </main>

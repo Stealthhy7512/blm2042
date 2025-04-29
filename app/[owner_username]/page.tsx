@@ -12,24 +12,24 @@ interface User {
   banner: string;
 }
 
-export default function Home({ params }: { params: { id: string } }) {
+export default function Home({ params }: { params: { owner_username: string } }) {
   // Giriş yapmış kullanıcının bilgileri
   const user: User = {
-    displayName: "Ahmet",
-    username: "ahmet012",
+    displayName: "Kaan Yazici",
+    username: params.owner_username,
     postNumber: 12,
     following: 120,
     followers: 500,
-    profilePic: "profile.jpg",
+    profilePic: "/customers/evil-rabbit.png",
     banner: "banner.jpg",
   };
 
   // Örnek gönderi verisi
   const exPost: postCard = {
-    id: '1',
-    post_owner: 'Kaan Yazici',
-    owner_url: '/customers/evil-rabbit.png',
-    image_url: '/graph.png',
+    owner_username: 'kaanyazici',
+    owner_name: 'Kaan Yazici',
+    owner_image_url: '/customers/evil-rabbit.png',
+    content_image_url: '/graph.png',
     message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget enim mi...',
     date: '03/03/2025',
     likes: 10,

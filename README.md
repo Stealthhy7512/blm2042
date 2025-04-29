@@ -22,4 +22,7 @@ bun dev
 3. `PostCard` content should be fetched from database.
 4. User auth logic should be implemented.
 5. `Header` should display user info if auth.
+6. Type `postCard` has data `username`, `name`, etc. Removed `id`.
+7. Comments should be fetched from database and functionality to be implemented.
+8. `postCard` info should be fetched from database using id from unique username.
 

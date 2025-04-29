@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from "react";
+import React, { useState } from "react";
+import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
+import { tags } from "@/app/lib/definitions";
 
 export default function PostForm() {
   const [message, setMessage] = useState("");
@@ -31,7 +33,7 @@ export default function PostForm() {
       {/* Mesaj Textarea */}
       <textarea
         className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
-        placeholder="Ne düşünüyorsun?"
+        placeholder="Start typing"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         rows={3}
@@ -53,12 +55,27 @@ export default function PostForm() {
         )}
       </div>
 
+      <div className="mt-6">
+        <p className="text-lg font-semibold text-gray-700 mb-4">Select tags</p>
+        <ToggleGroup type="multiple" className="flex flex-wrap gap-4">
+          {tags.map(tag => (
+            <ToggleGroupItem
+              key={tag}
+              value={tag}
+              className="flex items-center justify-center px-10 py-4 text-sm text-gray-700 rounded-full border border-gray-300 transition-all hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-600 data-[state=on]:bg-blue-500 data-[state=on]:text-white"
+            >
+              {tag}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
+      </div>
+
       {/* Gönder Butonu */}
       <button
         type="submit"
         className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-all text-sm"
       >
-        Gönder
+        Post
       </button>
     </form>
   );
