@@ -8,12 +8,6 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- SETTINGS Table
-CREATE TABLE settings (
-    user_id INTEGER PRIMARY KEY REFERENCES users(user_id) ON DELETE CASCADE
-    -- settings
-);
-
 -- CATEGORY Table
 CREATE TABLE category (
     category_id SERIAL PRIMARY KEY,
@@ -37,11 +31,18 @@ CREATE TABLE post (
     visibility boolean 
 );
 
+-- Post belongs to 0-N category 
+CREATE TABLE post_category (
+    post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
+    category_id INTEGER REFERENCES category(category_id) ON DELETE CASCADE,
+    PRIMARY KEY (post_id, category_id)
+);
+	
 -- MEDIA Table / post basi 1 fotograf (varsa)
 CREATE TABLE media (
-  media_url TEXT NOT NULL,
-	post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
-	PRIMARY KEY(post_id)
+    media_url TEXT NOT NULL,
+    post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
+    PRIMARY KEY(post_id)
 );
 
 -- COMMENT Table
