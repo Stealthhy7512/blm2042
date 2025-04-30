@@ -45,7 +45,7 @@ export default function Home() {
   const [selectedInterest, setSelectedInterest] = useState<string | null>(null);
 
   const filteredPosts = selectedInterest
-    ? posts.filter((post) => post.message.toLowerCase().includes(selectedInterest.toLowerCase()))
+    ? posts.filter((post: postCard) => (post.message ?? "").toLowerCase().includes(selectedInterest.toLowerCase()))
     : posts;
 
   return (
