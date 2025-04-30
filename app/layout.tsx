@@ -24,7 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isAuthenticated = false // TODO: Replace with actual auth logic
+  const isAuthenticated = true // TODO: Replace with actual auth logic
   return (
     <html lang="en">
       <body
