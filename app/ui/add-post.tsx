@@ -1,46 +1,50 @@
 'use client';
 
-import React, { useState } from "react";
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
+import { useState } from "react";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { tags } from "@/app/lib/definitions";
+import { toast } from "sonner";
 
 export default function PostForm() {
   const [message, setMessage] = useState("");
   const [image, setImage] = useState<File | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("message", message);
-    if (image) formData.append("image", image);
+    if (!message.trim() && !image) {
+      toast.error("Lütfen bir mesaj yazın veya görsel ekleyin.");
+      return;
+    }
 
-    // API'ye gönder
-    const res = await fetch("/api/posts", {
-      method: "POST",
-      body: formData,
+    // Gönderim başarılıysa
+    toast.success("Gönderi başarıyla oluşturuldu!", {
+      description: selectedTags.length > 0
+        ? `Etiketler: ${selectedTags.join(", ")}`
+        : "Etiket seçilmedi.",
     });
 
-    if (res.ok) {
-      alert("Gönderi eklendi!");
-      setMessage("");
-      setImage(null);
-    }
+    // Temizle
+    setMessage("");
+    setImage(null);
+    setSelectedTags([]);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto p-4 bg-white rounded-lg shadow-sm">
-      {/* Mesaj Textarea */}
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 max-w-md mx-auto p-4 bg-white rounded-lg shadow-sm"
+    >
       <textarea
         className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
-        placeholder="Start typing"
+        placeholder="Ne düşünüyorsun?"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         rows={3}
-        required
       />
 
-      {/* Dosya Seçme */}
       <div className="flex items-center justify-between gap-2">
         <input
           type="file"
@@ -55,14 +59,19 @@ export default function PostForm() {
         )}
       </div>
 
-      <div className="mt-6">
-        <p className="text-lg font-semibold text-gray-700 mb-4">Select tags</p>
-        <ToggleGroup type="multiple" className="flex flex-wrap gap-4">
-          {tags.map(tag => (
+      <div>
+        <p className="text-sm font-medium mb-2 text-gray-700">İlgi alanları (isteğe bağlı):</p>
+        <ToggleGroup
+          type="multiple"
+          value={selectedTags}
+          onValueChange={setSelectedTags}
+          className="flex flex-wrap gap-2"
+        >
+          {tags.map((tag) => (
             <ToggleGroupItem
               key={tag}
               value={tag}
-              className="flex items-center justify-center px-10 py-4 text-sm text-gray-700 rounded-full border border-gray-300 transition-all hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-600 data-[state=on]:bg-blue-500 data-[state=on]:text-white"
+              className="px-10 py-2 text-sm rounded-full border border-gray-300 text-gray-600 hover:bg-blue-100 data-[state=on]:bg-blue-600 data-[state=on]:text-white"
             >
               {tag}
             </ToggleGroupItem>
@@ -70,12 +79,11 @@ export default function PostForm() {
         </ToggleGroup>
       </div>
 
-      {/* Gönder Butonu */}
       <button
         type="submit"
         className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-all text-sm"
       >
-        Post
+        Gönder
       </button>
     </form>
   );
