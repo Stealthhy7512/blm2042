@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-
+import {toast} from "sonner"
 export default function ProfileSettingsForm() {
   const [displayName, setDisplayName] = useState("Ahmet");
   const [username, setUsername] = useState("ahmet012");
@@ -20,7 +20,7 @@ export default function ProfileSettingsForm() {
     if (banner) formData.append("banner", banner);
 
     // API'ye gönderilebilir
-    alert("Profil ayarları güncellendi!");
+    toast.success("Settings are successfully changed")
   };
 
   return (
