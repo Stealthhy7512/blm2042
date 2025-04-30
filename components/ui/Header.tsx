@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { UserCircle, Star } from "lucide-react"
+import { UserCircle, Star, Settings, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function Header({ isAuthenticated }: { isAuthenticated: boolean }) {
@@ -15,9 +15,20 @@ export default function Header({ isAuthenticated }: { isAuthenticated: boolean }
             <nav className="flex items-center space-x-6">
                 {/* TODO: Add search bar */}
                 {isAuthenticated ? (
-                    <Link href="/profile">
-                        <UserCircle className="w-8 h-8 text-gray-700 hover:text-blue-600 transition-all duration-300" />
-                    </Link>
+                    <div className="flex items-center space-x-4">
+                        {/* Community Button */}
+                        <Link href="/community">
+                            <Users className="w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" /> 
+                        </Link>
+                        {/* Profile Icon */}
+                        <Link href="/profile">
+                            <UserCircle className="w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
+                        </Link>
+                        {/* Settings Button */}
+                        <Link href="/settings">
+                            <Settings className="w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
+                        </Link>
+                    </div>
                 ) : (
                     <>
                         <Link href="/signin">
