@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { tags } from "@/app/lib/definitions";
-
+import {toast }from "sonner";
 export default function SignUpPage() {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -17,18 +17,16 @@ export default function SignUpPage() {
     e.preventDefault();
 
     if (!username || !name || !email || !password) {
-      setError("Please fill in all the fields.");
+      toast.error("Please fill in all the fields.");
       return;
     }
 
     if (interests.length === 0) {
-      setError("Please select at least one interest.");
+      toast.error("Please select at least one interest.");
       return;
     }
-
-    setError("");
+    toast.success("Sign up is succesfully completed.")
     // Kayıt işlemleri burada yapılır (örneğin: API çağrısı)
-    console.log("Form submitted:", { username, name, email, password, interests });
   };
 
   return (
