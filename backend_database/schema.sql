@@ -26,8 +26,7 @@ CREATE TABLE user_interest (
 CREATE TABLE post (
     post_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-    title VARCHAR(255) NOT NULL,
-    post_content TEXT,
+    content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     visibility boolean 
 );
