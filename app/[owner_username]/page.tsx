@@ -12,11 +12,13 @@ interface User {
   banner: string;
 }
 
-export default function Home({ params }: { params: { owner_username: string } }) {
+export default async function Home({ params }: { params: Promise<{ owner_username: string }> }) {
+  const data = await params;
+  const username = data.owner_username;
   // Giriş yapmış kullanıcının bilgileri
   const user: User = {
     displayName: "Kaan Yazici",
-    username: params.owner_username,
+    username: username,
     postNumber: 12,
     following: 120,
     followers: 500,
