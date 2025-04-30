@@ -24,10 +24,6 @@ export default function Header({ isAuthenticated }: { isAuthenticated: boolean }
                         <Link href="/profile">
                             <UserCircle className="w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
                         </Link>
-                        {/* Settings Button */}
-                        <Link href="/settings">
-                            <Settings className="w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
-                        </Link>
                     </div>
                 ) : (
                     <>
