@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function SignInPage() {
   const [username, setUsername] = useState("");
@@ -10,12 +11,17 @@ export default function SignInPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!username || !password) {
-      setError("Please fill in both username and password.");
+      toast.error("Please fill in both username and password.");
     } else {
-      setError("");
       // Giriş işlemleri burada yapılır (örneğin: API çağrısı)
-      console.log("Logging in with:", username, password);
+      
+      // Eğer giriş başarılıysa
+      toast.success("Login successful! Welcome back.");
+      
+      // Hata durumunda
+      // toast.error("Invalid credentials. Please try again.");
     }
   };
 
