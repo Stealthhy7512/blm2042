@@ -27,8 +27,9 @@ CREATE TABLE post (
     post_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
     content TEXT,
+    image_url TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    visibility boolean 
+    homepage_visible boolean 
 );
 
 -- Post belongs to 0-N category 
@@ -38,12 +39,6 @@ CREATE TABLE post_category (
     PRIMARY KEY (post_id, category_id)
 );
 	
--- MEDIA Table / post basi 1 fotograf (varsa)
-CREATE TABLE media (
-    media_url TEXT NOT NULL,
-    post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
-    PRIMARY KEY(post_id)
-);
 
 -- COMMENT Table
 CREATE TABLE comment (
