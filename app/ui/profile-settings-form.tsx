@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import {toast} from "sonner"
+
+// FIXME: Placeholderlar authenticated user'dan fetchlenecek
 export default function ProfileSettingsForm() {
   const [displayName, setDisplayName] = useState("Ahmet");
   const [username, setUsername] = useState("ahmet012");
@@ -22,7 +24,6 @@ export default function ProfileSettingsForm() {
     // API'ye gönderilebilir
     toast.success("Settings are successfully changed")
   };
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-xl mx-auto p-8 bg-white rounded-xl shadow-lg">
       <div>

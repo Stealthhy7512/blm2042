@@ -1,21 +1,9 @@
 import BlockButton from "@/app/ui/block-button";
 import FollowButton from "@/app/ui/follow-button";
 import Link from "next/link";
+import { User } from "@/app/lib/definitions"
 
-interface ProfileHeaderVariables {
-  user: {
-    displayName: string;
-    username: string;
-    postNumber: number;
-    following: number;
-    followers: number;
-    profilePic: string;
-    banner: string;
-    isCurrentUser?: boolean; // Kullanıcı kendi profilindeyse true
-  };
-}
-
-function ProfileHeader({ user }: ProfileHeaderVariables) {
+export default function ProfileHeader({ user }: { user: User }) {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mx-auto max-w-3xl">
       {/* Banner */}
@@ -88,5 +76,3 @@ function ProfileHeader({ user }: ProfileHeaderVariables) {
     </div>
   );
 }
-
-export default ProfileHeader;

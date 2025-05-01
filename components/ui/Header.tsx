@@ -48,8 +48,8 @@ export default function Header({ isAuthenticated }: { isAuthenticated: boolean }
                       {/* Dropdown Menu */}
                       {dropdownOpen && (
                         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-md rounded-md z-50">
-                            {/* TODO: Root to user profile */}
-                            <Link href="/{username}" className="px-4 py-2 hover:bg-gray-100 flex items-center">
+                            {/* FIXME: username should be fetched from authenticated user */}
+                            <Link href='/kaanyazici' className="px-4 py-2 hover:bg-gray-100 flex items-center">
                                 <User className="w-4 h-4 mr-2" />View Profile</Link>
 
                             <Link href="/add-post" className="px-4 py-2 hover:bg-gray-100 flex items-center">

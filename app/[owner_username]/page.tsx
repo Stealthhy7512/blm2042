@@ -1,16 +1,6 @@
 import ProfileHeader from "@/components/ui/profileHeader";
 import { PostCard } from '@/app/ui/post-card';
-import { postCard } from '@/app/lib/definitions';
-
-interface User {
-  displayName: string;
-  username: string;
-  postNumber: number;
-  following: number;
-  followers: number;
-  profilePic: string;
-  banner: string;
-}
+import { postCard, User } from '@/app/lib/definitions';
 
 export default async function Home({ params }: { params: Promise<{ owner_username: string }> }) {
   const data = await params;

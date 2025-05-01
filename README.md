@@ -25,4 +25,6 @@ bun dev
 6. Type `postCard` has data `username`, `name`, etc. Removed `id`.
 7. Comments should be fetched from database and functionality to be implemented.
 8. `postCard` info should be fetched from database using id from unique username.
+9. Exported types could be modified for backend.
+10. Settings screen placeholder data should be fetched from auth'ed user.
 
