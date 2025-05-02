@@ -22,6 +22,7 @@ import { inter } from '@/app/ui/fonts'
 import LikeButton from '@/app/ui/like-button'
 import CommentButton from "@/app/ui/comment-button";
 import FollowButton from "@/app/ui/follow-button";
+import ShareButon from '@/app/ui/share-button';
 import Link from "next/link";
 
 
@@ -135,6 +136,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
               <div className="flex flex-row justify-end gap-2">
                 <LikeButton likes={Post.likes} />
                 <CommentButton comments={Post.comments} />
+                <ShareButon />
               </div>
             </div>
           </div>
