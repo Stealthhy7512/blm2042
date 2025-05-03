@@ -1,11 +1,19 @@
+CREATE TABLE media (
+    media_id SERIAL PRIMARY KEY,
+    image_name VARCHAR(255),
+    image_type VARCHAR(255),
+    image_byte BYTEA
+);
+
 -- USER Table
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-    name_surname VARCHAR(255) NOT NULL,
+    visible_name VARCHAR(255),
     username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     user_password VARCHAR(255) NOT NULL,
-    profile_photo_url TEXT,
+    profile_photo_id INTEGER REFERENCES media(media_id),
+    banner_photo_id INTEGER REFERENCES media(media_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -27,7 +35,7 @@ CREATE TABLE post (
     post_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
     content TEXT,
-    image_url TEXT,
+    media_id INTEGER REFERENCES media(media_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     homepage_visible boolean 
 );
@@ -60,7 +68,7 @@ CREATE TABLE post_like (
 CREATE TABLE community (
     community_id SERIAL PRIMARY KEY,
     community_name VARCHAR(255) NOT NULL,
-    community_photo_url TEXT
+    media_id INTEGER REFERENCES media(media_id)
 );
 
 -- USER_COMMUNITY Table 
