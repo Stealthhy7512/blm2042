@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { Star } from "lucide-react"
+import { Star, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ProfileNav from "@/components/ui/profile-nav"
 import SearchBar from "@/components/ui/search-bar"
@@ -9,10 +9,10 @@ import SearchBar from "@/components/ui/search-bar"
 export default function Header({ isAuthenticated }: { isAuthenticated: boolean }) {
     
     return (
-        <header className="w-full flex items-center justify-between px-6 py-4 bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200 sticky top-0 z-50">
-            <Link href="/" className="flex items-center space-x-2">
+        <header className="transition-shadow duration-300 hover:shadow-gray-300 w-full flex items-center justify-between px-6 py-4 bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200 sticky top-0 z-50">
+            <Link href="/" className="flex items-center space-x-2 text-xl hover:text-2xl transition-all duration-300">
                 <Star className="text-blue-600 w-6 h-6" />
-                <h1 className="text-xl font-bold text-blue-700 hidden sm:block">YildizNet</h1>
+                <h1 className=" font-bold text-blue-700 hidden sm:block">YildizNet</h1>
             </Link>
             {/* Search Bar */}
             <SearchBar />
@@ -20,9 +20,9 @@ export default function Header({ isAuthenticated }: { isAuthenticated: boolean }
             <nav className="flex items-center space-x-6 ml-auto">
                 {isAuthenticated ? (
                   <div className="flex items-center space-x-4">
-                    {/*<Link href="/community">
-                    <Users className="w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
-                    </Link>*/}
+                    <Link href="/community">
+                        <Users className="hover:w-7 hover:h-7 w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
+                    </Link>
                     <ProfileNav />
                   </div>
                 ) : (

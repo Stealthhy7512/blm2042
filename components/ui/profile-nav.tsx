@@ -23,7 +23,7 @@ export default function ProfileNav() {
   return (
     <div className="relative" ref={dropdownRef}>
         <button onClick={() => setDropdownOpen(!dropdownOpen)}>
-            <UserCircle className="w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
+            <UserCircle className="hover:w-7 hover:h-7 w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
         </button>   
 
     {dropdownOpen && (
