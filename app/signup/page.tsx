@@ -1,17 +1,21 @@
 "use client";
-import { useState } from "react";
+
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { tags } from "@/app/lib/definitions";
-import {toast }from "sonner";
+import { toast }from "sonner";
+import { useRouter } from "next/navigation";
+
 export default function SignUpPage() {
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [interests, setInterests] = useState<string[]>([]);
-  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,13 +24,32 @@ export default function SignUpPage() {
       toast.error("Please fill in all the fields.");
       return;
     }
-
     if (interests.length === 0) {
       toast.error("Please select at least one interest.");
       return;
     }
-    toast.success("Sign up is succesfully completed.")
-    // Kayıt işlemleri burada yapılır (örneğin: API çağrısı)
+
+    fetch('http://localhost:8080/user/signup', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        visibleName: name,
+        userCategories: interests
+      }),
+    }).then(async res => {
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success("Sign up is successfully completed.")
+        router.push('/signin');
+      }
+      data && toast.error('Signup failed.');
+    })
   };
 
   return (
