@@ -1,28 +1,69 @@
 'use client';
 
-import { useState } from "react";
-import {toast} from "sonner"
+import { useState, useEffect } from "react";
+import { toast } from "sonner";
+import { z } from 'zod';
 
-// FIXME: Placeholderlar authenticated user'dan fetchlenecek
+const formSchema = z.object({
+  displayName: z.string().min(1, 'Name must require at least 1 character.'),
+  username: z.string().min(1, 'Username must require at least 1 character.'),
+  bio: z.string().optional(),
+})
+
 export default function ProfileSettingsForm() {
-  const [displayName, setDisplayName] = useState("Ahmet");
-  const [username, setUsername] = useState("ahmet012");
-  const [bio, setBio] = useState("Kendimi geliştirmeyi seviyorum.");
+  const [displayName, setDisplayName] = useState("");
+  const [username, setUsername] = useState("");
+  const [bio, setBio] = useState("");
   const [profilePic, setProfilePic] = useState<File | null>(null);
   const [banner, setBanner] = useState<File | null>(null);
+
+  // FIXME: setProfilePic will fail, backend should serve virtual endpoint URL
+  useEffect(() => {
+    fetch('http://localhost:8080/user/settings').then(async res => {
+      const data = await res.json();
+      if (res.ok) {
+        setDisplayName(data.displayName);
+        setUsername(data.username);
+        setBio(data.bio);
+        setProfilePic(data.profilePic);
+        setBanner(data.banner);
+      }
+    })
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("displayName", displayName);
-    formData.append("username", username);
-    formData.append("bio", bio);
-    if (profilePic) formData.append("profilePic", profilePic);
-    if (banner) formData.append("banner", banner);
+    const validatedFields = formSchema.safeParse({
+      displayName: displayName,
+      username: username,
+      bio: bio,
+    });
 
-    // API'ye gönderilebilir
-    toast.success("Settings are successfully changed")
+    if (!validatedFields.success) {
+      validatedFields.error.errors.map(err => toast.error(err.message));
+      console.log(validatedFields.error.errors.map(err => err.message));
+      return;
+    }
+    const validatedData = validatedFields.data;
+
+    const formData = new FormData();
+    Object.entries(validatedData).forEach(([key, value]) => {
+      value && formData.append(key, value);
+    });
+    profilePic && formData.append('profilePic', profilePic);
+    banner && formData.append('banner', banner);
+
+    fetch('http://localhost:8080/user/settings', {
+      method: 'PUT',
+      body: formData,
+    }).then(async res => {
+      if (res.ok) {
+        toast.success("Settings are successfully changed")
+      } else {
+        // Error handling
+      }
+    })
   };
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-xl mx-auto p-8 bg-white rounded-xl shadow-lg">
