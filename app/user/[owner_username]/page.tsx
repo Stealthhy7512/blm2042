@@ -1,10 +1,13 @@
-import ProfileHeader from "@/components/ui/profileHeader";
+import ProfileHeader from "@/app/ui/profileHeader";
 import { PostCard } from '@/app/ui/post-card';
 import { postCard, User } from '@/app/lib/definitions';
+
+
 
 export default async function Home({ params }: { params: Promise<{ owner_username: string }> }) {
   const data = await params;
   const username = data.owner_username;
+
   // Giriş yapmış kullanıcının bilgileri
   const user: User = {
     displayName: "Kaan Yazici",
@@ -16,7 +19,7 @@ export default async function Home({ params }: { params: Promise<{ owner_usernam
     banner: "banner.jpg",
   };
 
-  // Örnek gönderi verisi
+// Örnek gönderi verisi
   const exPost: postCard = {
     owner_username: 'kaanyazici',
     owner_name: 'Kaan Yazici',
@@ -27,6 +30,17 @@ export default async function Home({ params }: { params: Promise<{ owner_usernam
     likes: 10,
     comments: 1,
   };
+
+  // const res = await fetch(
+  //   '/endpoint', {
+  //     method: 'GET'
+  //   },
+  // )
+  // // FIXME: fix endpoint names
+  // const [res1, res2] = await Promise.all([
+  //   fetch("/endpoint1"),
+  //   fetch("/endpoint2")
+  // ]);
 
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen p-4">
