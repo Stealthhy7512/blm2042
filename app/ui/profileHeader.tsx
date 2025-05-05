@@ -16,7 +16,7 @@ export default function ProfileHeader({ user }: { user: User }) {
         }}
       >
         {/* Profil fotoğrafı */}
-        <div className="absolute bottom-[-40px] left-4">
+        <div className="absolute bottom-[-40px] left-4 transition-all duration-300 hover:scale-110">
           <img
             src={user.profilePic}
             alt="Profile"
@@ -42,7 +42,7 @@ export default function ProfileHeader({ user }: { user: User }) {
                     Ayarlar
                   </button>
                 </Link>
-                <Link href="/create-post">
+                <Link href="/add-post">
                   <button className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition">
                     Yeni Gönderi
                   </button>
@@ -59,15 +59,15 @@ export default function ProfileHeader({ user }: { user: User }) {
 
         {/* Sayaçlar */}
         <div className="mt-6 flex justify-around text-center">
-          <div>
-            <p className="text-lg font-bold">{user.postNumber}</p>
+          <div className="transition-all duration-75 hover:scale-125">
+            <p className="text-lg font-bold ">{user.postNumber}</p>
             <p className="text-sm text-gray-600">Posts</p>
           </div>
-          <div>
+          <div className="transition-all duration-75 hover:scale-110">
             <p className="text-lg font-bold">{user.followers}</p>
             <p className="text-sm text-gray-600">Followers</p>
           </div>
-          <div>
+          <div className="transition-all duration-75 hover:scale-110">
             <p className="text-lg font-bold">{user.following}</p>
             <p className="text-sm text-gray-600">Following</p>
           </div>
