@@ -1,28 +1,44 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "sonner";
+import { useRouter } from 'next/navigation';
 
 export default function SignInPage() {
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
       toast.error("Please fill in both username and password.");
-    } else {
-      // Giriş işlemleri burada yapılır (örneğin: API çağrısı)
-      
-      // Eğer giriş başarılıysa
-      toast.success("Login successful! Welcome back.");
-      
-      // Hata durumunda
-      // toast.error("Invalid credentials. Please try again.");
+      return;
     }
+
+    fetch('http://localhost:8080/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: 'include',
+      body: new URLSearchParams({ username, password }).toString(),
+    }).then( async res => {
+      const data = await res.json();
+      const status = res.status;
+      console.log(status, data);
+      if (res.ok) {
+        toast.success("Login successful! Welcome back.");
+        setTimeout(() => {
+          router.push('/');
+          }, 500);
+      } else {
+        toast.error('Login failed.');
+      }
+    })
   };
 
   return (
@@ -49,17 +65,14 @@ export default function SignInPage() {
               className="w-full border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             />
           </div>
-          {error && (
-            <p className="text-red-500 text-sm text-center">{error}</p>
-          )}
           <Button type="submit" className="w-full py-3 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors">
             Sign In
           </Button>
         </form>
 
         <p className="text-sm text-center mt-4 text-gray-600">
-          Don’t have an account?{" "}
-          <Link href="/signup" className="text-blue-600 underline hover:text-blue-800 transition-colors">
+          Don’t have an account?
+          <Link href="/signup" className="text-blue-600 underline hover:text-blue-800 transition-colors mx-2">
             Sign up
           </Link>
         </p>
