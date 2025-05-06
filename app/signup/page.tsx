@@ -107,17 +107,13 @@ export default function SignUpPage() {
             </ToggleGroup>
           </div>
 
-          {error && (
-            <p className="text-red-500 text-sm text-center">{error}</p>
-          )}
-
           <Button type="submit" className="w-full py-3 bg-blue-600 text-white hover:bg-blue-700 transition-colors">
             Sign Up
           </Button>
         </form>
         <p className="text-sm text-center mt-4">
-          Already have an account?{" "}
-          <Link href="/signin" className="text-blue-600 underline hover:text-blue-800">
+          Already have an account?
+          <Link href="/signin" className="text-blue-600 underline hover:text-blue-800 mx-1">
             Sign in
           </Link>
         </p>
