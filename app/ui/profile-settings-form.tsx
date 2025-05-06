@@ -19,8 +19,11 @@ export default function ProfileSettingsForm() {
 
   // FIXME: setProfilePic will fail, backend should serve virtual endpoint URL
   useEffect(() => {
-    fetch('http://localhost:8080/user/settings').then(async res => {
+    fetch('http://localhost:8080/user/settings', {
+      credentials: 'include',
+    }).then(async res => {
       const data = await res.json();
+
       if (res.ok) {
         setDisplayName(data.displayName);
         setUsername(data.username);
@@ -56,6 +59,7 @@ export default function ProfileSettingsForm() {
 
     fetch('http://localhost:8080/user/settings', {
       method: 'POST',
+      credentials: 'include',
       body: formData,
     }).then(async res => {
       if (res.ok) {

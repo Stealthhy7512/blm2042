@@ -26,11 +26,13 @@ export default function BlockButton({ username }: { username: string }) {
     if (isBlocked) {
       fetch(`http://localhost:8080/user/${owner_username}/block`, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({ owner_username }),
       });
     } else {
       fetch(`http://localhost:8080/user/${owner_username}/unblock`, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({ owner_username }),
       });
     }

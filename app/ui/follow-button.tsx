@@ -16,11 +16,13 @@ export default function FollowButton({ username }: { username: string }) {
     if (isFollowing) {
       fetch(`http://localhost:8080/user/${owner_username}/follow`, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({owner_username}),
       });
     } else {
       fetch(`http://localhost:8080/user/${owner_username}/unfollow`, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({owner_username}),
       });
     }
