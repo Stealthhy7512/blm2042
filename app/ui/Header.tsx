@@ -10,7 +10,7 @@ export default function Header({ isAuthenticated }: { isAuthenticated: boolean }
     
     return (
         <header className="transition-shadow duration-300 hover:shadow-gray-300 w-full flex items-center justify-between px-6 py-4 bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200 sticky top-0 z-50">
-            <Link href="/public" className="flex items-center space-x-2 text-xl hover:text-2xl transition-all duration-300">
+            <Link href="/" className="flex items-center space-x-2 text-xl hover:text-2xl transition-all duration-300">
                 <Star className="text-blue-600 w-6 h-6" />
                 <h1 className=" font-bold text-blue-700 hidden sm:block">YildizNet</h1>
             </Link>

@@ -55,7 +55,7 @@ export default function ProfileSettingsForm() {
     banner && formData.append('banner', banner);
 
     fetch('http://localhost:8080/user/settings', {
-      method: 'PUT',
+      method: 'POST',
       body: formData,
     }).then(async res => {
       if (res.ok) {

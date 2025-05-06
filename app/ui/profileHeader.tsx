@@ -50,8 +50,8 @@ export default function ProfileHeader({ user }: { user: User }) {
               </>
             ) : (
               <>
-                <FollowButton />
-                <BlockButton />
+                <FollowButton username={user.username} />
+                <BlockButton username={user.username} />
               </>
             )}
           </div>

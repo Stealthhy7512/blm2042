@@ -33,7 +33,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
       <CardHeader>
         <CardTitle className='flex items-center gap-1.5 text-lg'>
           <div className='flex items-center w-full justify-between gap-3 px-1.5'>
-            <Link href={`/${Post.owner_username}`} className='flex flex-row items-center gap-1.5'>
+            <Link href={`/user/${Post.owner_username}`} className='flex flex-row items-center gap-1.5'>
               <Image
                 src={Post.owner_image_url}
                 className="mr-2 rounded-full"
@@ -42,7 +42,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                 alt={'image'} />
               {Post.owner_name}
             </Link>
-            <FollowButton />
+              <FollowButton username={Post.owner_username} />
           </div>
         </CardTitle>
       </CardHeader>
@@ -101,7 +101,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                               alt={'image'} />
                             {Post.owner_name}
                           </Link>
-                          <FollowButton />
+                          <FollowButton username={Post.owner_username} />
                         </div>
                         <p className="text-sm">{Post.message}</p>
                         <div className="flex justify-start text-sm text-muted-foreground gap-3 mt-2">

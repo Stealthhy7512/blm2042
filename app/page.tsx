@@ -47,7 +47,7 @@ export default function Home() {
 
   const filteredPosts = selectedInterest
     ? posts.filter((post) =>
-        post.message.toLowerCase().includes(selectedInterest.toLowerCase())
+        (post.message ?? '').toLowerCase().includes(selectedInterest.toLowerCase())
       )
     : posts;
 
