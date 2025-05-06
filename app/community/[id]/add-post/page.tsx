@@ -1,14 +1,15 @@
-// app/community/[id]/new-post/page.tsx
-
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function NewPostPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function NewPostPage() {
   const router = useRouter();
+
+  const params = useParams<{ id: string }>();
+  const id = params.id;
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
