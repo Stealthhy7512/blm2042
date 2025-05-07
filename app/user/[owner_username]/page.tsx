@@ -3,7 +3,6 @@ import { PostCard } from '@/app/ui/post-card';
 import { postCard, User } from '@/app/lib/definitions';
 
 
-
 export default async function Home({ params }: { params: Promise<{ owner_username: string }> }) {
   const data = await params;
   const username = data.owner_username;

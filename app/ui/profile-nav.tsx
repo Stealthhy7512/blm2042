@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
 import { UserCircle, User, PlusCircle, Settings, Users, SwitchCamera, LogOut } from "lucide-react"
+import LogoutButton from '@/app/ui/logout-button';
 
 export default function ProfileNav() {
     const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -28,23 +29,23 @@ export default function ProfileNav() {
 
     {dropdownOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-md rounded-md z-50">
-            <Link href='/kaanyazici' className="px-4 py-2 hover:bg-gray-100 flex items-center">
-                <User className="w-4 h-4 mr-2" />View Profile</Link>
+            <Link href='/user/' className="px-4 py-2 hover:bg-gray-100 flex items-center">
+                <User className="w-4 h-4 mr-2" />View Profile
+            </Link>
 
             <Link href="/add-post" className="px-4 py-2 hover:bg-gray-100 flex items-center">
-                <PlusCircle className="w-4 h-4 mr-2" />Add Post</Link>
+                <PlusCircle className="w-4 h-4 mr-2" />Add Post
+            </Link>
 
             <Link href="/settings" className="px-4 py-2 hover:bg-gray-100 flex items-center">
-                <Settings className="w-4 h-4 mr-2" />Settings</Link>
+                <Settings className="w-4 h-4 mr-2" />Settings
+            </Link>
 
             <Link href="/create-community" className="px-4 py-2 hover:bg-gray-100 flex items-center">
-                <Users className="w-4 h-4 mr-2" />Create Community</Link>
+                <Users className="w-4 h-4 mr-2" />Create Community
+            </Link>
 
-            <button className="w-full px-4 py-2 hover:bg-gray-100 flex items-center">
-                <SwitchCamera className="w-4 h-4 mr-2" />Change Account</button>
-
-            <button className="w-full px-4 py-2 hover:bg-red-100 text-red-600 flex items-center">
-                <LogOut className="w-4 h-4 mr-2" />Log Out</button>
+            <LogoutButton />
         </div>
     )}
     </div>
