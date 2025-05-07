@@ -2,8 +2,9 @@
 
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
-import { UserCircle, User, PlusCircle, Settings, Users, SwitchCamera, LogOut } from "lucide-react"
+import { UserCircle, PlusCircle, Settings, Users } from "lucide-react"
 import LogoutButton from '@/app/ui/logout-button';
+import ViewProfileButton from '@/app/ui/view-profile-button';
 
 export default function ProfileNav() {
     const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -29,9 +30,7 @@ export default function ProfileNav() {
 
     {dropdownOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-md rounded-md z-50">
-            <Link href='/user/' className="px-4 py-2 hover:bg-gray-100 flex items-center">
-                <User className="w-4 h-4 mr-2" />View Profile
-            </Link>
+            <ViewProfileButton />
 
             <Link href="/add-post" className="px-4 py-2 hover:bg-gray-100 flex items-center">
                 <PlusCircle className="w-4 h-4 mr-2" />Add Post
