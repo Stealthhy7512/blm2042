@@ -28,7 +28,7 @@ export default function SearchBar() {
         }
     }
     return (
-        <div className="flex-1 flex justify-center">
+        <div className="flex-1 flex justify-center mx-2">
             <div className="relative w-full max-w-md">
                 <div className="flex items-center bg-gray-100 border border-gray-300 rounded-md px-3 py-2">
                     <Search className="w-4 h-4 text-gray-500 mr-2" />

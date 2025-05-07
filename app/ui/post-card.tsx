@@ -15,8 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ChatBubbleLeftRightIcon, CalendarIcon, HeartIcon } from "@heroicons/react/24/solid";
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import { CalendarIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { inter } from '@/app/ui/fonts'
 import LikeButton from '@/app/ui/like-button'
@@ -29,7 +28,7 @@ import Link from "next/link";
 export function PostCard({ Post }: { Post: postCard } ) {
 
   return (
-    <Card className={`md:block w-auto shadow-2xl ${inter.className} transition-all duration-300 hover:shadow-xl`}>
+    <Card className={`w-full max-w-2xl mx-auto shadow-2xl ${inter.className} transition-all duration-300 hover:shadow-xl`}>
       <CardHeader>
         <CardTitle className='flex items-center gap-1.5 text-lg'>
           <div className='flex items-center w-full justify-between gap-3 px-1.5'>
@@ -48,7 +47,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
       </CardHeader>
 
       <CardContent className="grid gap-4">
-        <div className="mb-4 grid grid-cols-[600px_1fr] items-start pb-4 last:mb-0 last:pb-0">
+        <div className="mb-4 grid grid-cols-1 md:grid-cols-[600px_1fr] items-start gap-4 pb-4 last:mb-0 last:pb-0">
           <div className="space-y-2">
             <p className='text-lg flex border-t-2 mt-5 pt-2 whitespace-normal'>
               {Post.message}
@@ -59,13 +58,16 @@ export function PostCard({ Post }: { Post: postCard } ) {
                 <DialogTrigger asChild>
                   <div className="cursor-pointer">
                     {Post.content_image_url && (
-                      <Image
-                        src={Post.content_image_url}
-                        width={500}
-                        height={500}
-                        alt={'image'}
-                        className="rounded-lg border-2 border-gray-200 hover:border-blue-500 transition-all"
-                      />
+                      <div className="w-full max-w-[500px] mx-auto">
+                        <Image
+                          src={Post.content_image_url}
+                          alt="post image"
+                          width={500}
+                          height={500}
+                          className="rounded-lg border-2 border-gray-200 hover:border-blue-500 transition-all object-contain w-full h-auto"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 500px"
+                        />
+                      </div>
                     )}
                   </div>
                 </DialogTrigger>
@@ -129,11 +131,11 @@ export function PostCard({ Post }: { Post: postCard } ) {
               </Dialog>
             </div>
 
-            <div className="flex flex-row items-center justify-between mx-4">
+            <div className="flex flex-row items-center justify-between mx-1">
               <div className="flex justify-start text-muted-foreground gap-3">
                 <CalendarIcon className='w-5' /> {Post.date}
               </div>
-              <div className="flex flex-row justify-end gap-2">
+              <div className="flex flex-row justify-end gap-1">
                 <LikeButton likes={Post.likes} />
                 <CommentButton comments={Post.comments} />
                 <ShareButon />

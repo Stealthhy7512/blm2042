@@ -52,7 +52,7 @@ export default function Home() {
     : posts;
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10 flex flex-row items-start gap-10 max-w-7xl mx-auto">
+    <main className="min-h-screen bg-gray-50 px-6 py-10 flex flex-col md:flex-row items-start gap-10 max-w-7xl mx-auto">
 
       <FilterPanel
         categories={categories}
