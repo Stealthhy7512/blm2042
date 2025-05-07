@@ -5,7 +5,7 @@ export default function ViewProfile() {
   const router = useRouter();
 
   const handleClick = () => {
-    fetch('http://localhost:8080/user/me', {
+    fetch('/api/user/me', {
       method: 'GET',
       credentials: 'include',
     }).then(async res => {

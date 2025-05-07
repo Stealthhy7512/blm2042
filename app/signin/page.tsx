@@ -19,7 +19,7 @@ export default function SignInPage() {
       return;
     }
 
-    fetch('http://localhost:8080/signin', {
+    fetch('/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

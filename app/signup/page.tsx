@@ -29,7 +29,7 @@ export default function SignUpPage() {
       return;
     }
 
-    fetch('http://localhost:8080/user/signup', {
+    fetch('/api/user/signup', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",

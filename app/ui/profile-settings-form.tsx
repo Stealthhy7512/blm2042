@@ -57,7 +57,7 @@ export default function ProfileSettingsForm() {
     profilePic && formData.append('profilePic', profilePic);
     banner && formData.append('banner', banner);
 
-    fetch('http://localhost:8080/user/settings', {
+    fetch('/api/user/settings', {
       method: 'POST',
       credentials: 'include',
       body: formData,

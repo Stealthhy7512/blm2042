@@ -1,12 +1,12 @@
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import {LogOut} from "lucide-react";
+import { LogOut } from "lucide-react";
 
 export default function LogoutButton() {
   const router = useRouter();
 
   const handleLogout = () => {
-    fetch('http://localhost:8080/logout', {
+    fetch('/api/logout', {
       method: 'POST',
       credentials: 'include',
     }).then(async res => {

@@ -10,7 +10,7 @@ export default function UserPage({ username }: { username: string }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/user/username/${username}`, {
+    fetch(`/api/user/username/${username}`, {
       method: "GET",
       credentials: 'include',
     }).then(async res => {
