@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 import ProfileHeader from "@/app/ui/profileHeader";
 import { PostCard } from '@/app/ui/post-card';
-import { postCard, User } from '@/app/lib/definitions';
+import { postCard, User, Socials } from '@/app/lib/definitions';
 
 export default function UserPage({ username }: { username: string }) {
-  console.log(username);
   const [user, setUser] = useState<User | null>(null);
+  const [id, setId] = useState<number | null>(null);
+  const [posts, setPosts] = useState<postCard[]>([]);
+  const [socials, setSocials] = useState<Socials[]>([]);
 
   useEffect(() => {
     fetch(`/api/user/username/${username}`, {
@@ -16,6 +18,7 @@ export default function UserPage({ username }: { username: string }) {
     }).then(async res => {
       const data = await res.json();
 
+      setId(data.userId);
       const userData: User = {
         displayName: data.visibleName,
         username: data.username,
@@ -29,29 +32,33 @@ export default function UserPage({ username }: { username: string }) {
       setUser(userData);
     });
   }, []);
+  useEffect(() => {
+    fetch(`/api/post/${id}/posts`, {
+      method: 'GET',
+      credentials: 'include',
+    }).then(async res => {
+      const data = await res.json();
 
-  // Giriş yapmış kullanıcının bilgileri
-  // const user: User = {
-  //   displayName: "Kaan Yazici",
-  //   username: owner_username,
-  //   postNumber: 12,
-  //   following: 120,
-  //   followers: 500,
-  //   profilePic: "/customers/evil-rabbit.png",
-  //   banner: "banner.jpg",
-  // };
-
-// Örnek gönderi verisi
-  const exPost: postCard = {
-    owner_username: 'kaanyazici',
-    owner_name: 'Kaan Yazici',
-    owner_image_url: '/customers/evil-rabbit.png',
-    content_image_url: '/graph.png',
-    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget enim mi...',
-    date: '03/03/2025',
-    likes: 10,
-    comments: 1,
-  };
+      if (res.ok) {
+        const parsedPosts: postCard[] = data.content.map((post: any) => ({
+          postId: post.postId,
+          owner_username: post.userSummary.username,
+          owner_name: post.userSummary.visibleName,
+          owner_image_url: post.userSummary.profilePhoto,
+          content_image_url: post.postImage,
+          message: post.content,
+          likes: post.numberOfPostLike,
+          comments: post.numberOfPostComment,
+        }));
+        const parsedSocials: Socials[] = data.content.map((post: any) => ({
+          isLiked: post.isPostLiked,
+          isFollowed: post.isPostAuthorFollowed,
+        }));
+        setPosts(parsedPosts);
+        setSocials(parsedSocials);
+      }
+    });
+  }, [id]);
 
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen p-4">
@@ -60,9 +67,9 @@ export default function UserPage({ username }: { username: string }) {
         {user && <ProfileHeader user={user} />}
 
         <div className="flex items-center flex-col gap-y-[64px] justify-center text-black mt-4">
-          {/* Gönderi kartlarını render et */}
-          <PostCard Post={exPost} />
-          <PostCard Post={exPost} />
+          {posts.map((post: postCard, index: number) => (
+            <PostCard Post={post} Socials={socials[index]} key={index} />
+          ))}
         </div>
       </div>
     </div>
