@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -10,6 +10,18 @@ export default function SignInPage() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (usernameRef.current?.value) {
+      setUsername(usernameRef.current.value);
+    }
+    if (passwordRef.current?.value) {
+      setPassword(passwordRef.current.value);
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,6 +64,7 @@ export default function SignInPage() {
               type="text"
               placeholder="Username"
               value={username}
+              ref={usernameRef}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             />
@@ -61,6 +74,7 @@ export default function SignInPage() {
               type="password"
               placeholder="Password"
               value={password}
+              ref={passwordRef}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             />
