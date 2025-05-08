@@ -1,17 +1,34 @@
 'use client';
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { tags } from "@/app/lib/definitions";
 import { toast } from "sonner";
-
+import { useRouter } from "next/navigation";
+import { Checkbox } from '@/components/ui/checkbox';
 export default function PostForm() {
+  const router = useRouter();
+
+  const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [homepageVisible, setHomepageVisible] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetch(`/api/user/profile`, {
+      method: 'POST',
+      credentials: 'include',
+    }).then(async res => {
+      const data = await res.json();
+
+      if (res.ok) {
+        setUsername(data.username);
+      }
+    });
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!message.trim() && !image) {
@@ -19,14 +36,33 @@ export default function PostForm() {
       return;
     }
 
-    // Gönderim başarılıysa
-    toast.success("Gönderi başarıyla oluşturuldu!", {
-      description: selectedTags.length > 0
-        ? `Etiketler: ${selectedTags.join(", ")}`
-        : "Etiket seçilmedi.",
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("homepageVisible", String(homepageVisible));
+    image && formData.append("postImage", image);
+    message && formData.append("title", message);
+    formData.append("postCategories", JSON.stringify(tags));
+
+    const res = await fetch("/api/post/create", {
+      method: "POST",
+      body: formData
     });
 
-    // Temizle
+    if (res.ok) {
+      // Gönderim başarılıysa
+      toast.success("Gönderi başarıyla oluşturuldu!", {
+        description: selectedTags.length > 0
+          ? `Etiketler: ${selectedTags.join(", ")}`
+          : "Etiket seçilmedi.",
+      });
+
+      router.push('/');
+    }
+
+    switch (res.status) {
+    }
+
+    setHomepageVisible(false);
     setMessage("");
     setImage(null);
     setSelectedTags([]);
@@ -39,7 +75,7 @@ export default function PostForm() {
     >
       <textarea
         className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
-        placeholder="Ne düşünüyorsun?"
+        placeholder="Start typing."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         rows={3}
@@ -60,7 +96,7 @@ export default function PostForm() {
       </div>
 
       <div>
-        <p className="text-sm font-medium mb-2 text-gray-700">İlgi alanları (isteğe bağlı):</p>
+        <p className="text-sm font-medium mb-2 text-gray-700">Choose interests</p>
         <ToggleGroup
           type="multiple"
           value={selectedTags}
@@ -79,11 +115,27 @@ export default function PostForm() {
         </ToggleGroup>
       </div>
 
+      <div className="items-top flex space-x-3">
+        <Checkbox
+          id="visibility"
+          defaultChecked={false}
+          onCheckedChange={() => setHomepageVisible(prev => !prev)}
+          className="data-[state=checked]:bg-blue-500 data-[state=unchecked]:hover:bg-gray-500 transition-all duration-300 ease-in-out"
+        />
+        <div className="grid gap-1.5 leading-none">
+          <label
+            htmlFor="visibility"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Visible to public
+          </label>
+        </div>
+      </div>
       <button
         type="submit"
         className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-all text-sm"
       >
-        Gönder
+        Post
       </button>
     </form>
   );
