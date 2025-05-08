@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 // TODO: Add `isFollowing` as a parameter if backend supplies isFollowing while fetching posts.
-export default function FollowButton({ username }: { username: string }) {
+export default function FollowButton({ username, isFollow }: { username: string, isFollow: boolean }) {
   const owner_username = username;
 
-  const [isFollowing, setIsFollowing] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(isFollow);
 
   function handleClick() {
     setIsFollowing(!isFollowing);

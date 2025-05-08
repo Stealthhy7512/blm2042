@@ -4,9 +4,9 @@ import { HeartIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { Toggle } from "@/components/ui/toggle";
 
-export default function LikeButton({ likes }: { likes: number }) {
+export default function LikeButton({ likes, isLiked }: { likes: number, isLiked: boolean }) {
   const [likeCount, setLikeCount] = useState(likes);
-  const [pressed, setPressed] = useState(false); // Beğenme durumu
+  const [pressed, setPressed] = useState(isLiked); // Beğenme durumu
 
   // Butona tıklanma işlevi
   function handleClick(pressed: boolean) {
@@ -16,9 +16,9 @@ export default function LikeButton({ likes }: { likes: number }) {
 
   return (
     <Toggle
-      className={`text-base flex gap-1 items-center transition-all duration-300 ease-in-out 
-        ${pressed ? 'text-red-500 scale-110' : 'text-muted-foreground'} 
-        hover:text-red-600`}
+      className={`text-base flex gap-1 items-center transition-all duration-300 ease-in-out bg-transparent
+      data-[state=on]:text-red-600 data-[state=off]:text-muted-foreground 
+      data-[state=off]:hover:text-red-600 hover:scale-110`}
       onPressedChange={handleClick}
       pressed={pressed}
     >
