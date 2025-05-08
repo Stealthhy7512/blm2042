@@ -24,7 +24,7 @@ export default function NewPostPage() {
   return (
     <main className="max-w-2xl mx-auto py-8 px-4">
       <div className="bg-white rounded-2xl shadow-lg p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-gray-900">Yeni Gönderi Oluştur</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Create New Post</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700">

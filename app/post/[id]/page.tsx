@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { PostCard } from "@/app/ui/post-card";
 import { postCard } from "@/app/lib/definitions";
 
-export default function PostDetailPage({ params }: { params: { id: string } }) {
+export default async function PostDetailPage(props: { params: Promise<{ id: string }> }) {
+    const { id } = await props.params;
     const post = {
         owner_username: "kaanyazici",
         owner_name: "Kaan Yazici",

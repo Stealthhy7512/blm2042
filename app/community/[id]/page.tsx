@@ -1,8 +1,5 @@
 // app/community/[id]/page.tsx
-
-'use client';
-
-import { useState } from 'react';
+// import { useState } from 'react';
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Heart, MessageCircle, UserPlus, UserCheck } from "lucide-react";
@@ -72,21 +69,19 @@ const dummyPosts: CommunityPosts = {
   ],
 };
 
-type Props = {
-  params: { id: string };
-};
-
-export default function CommunityDetailPage({ params }: Props) {
-  const posts = dummyPosts[params.id];
+export default async function CommunityDetailPage(props: { params: Promise<{ id: string }> }) {
+  const { id } = await props.params;
+  const posts = dummyPosts[id];
   if (!posts) return notFound();
 
   // Takip durumu state'i
-  const [isFollowing, setIsFollowing] = useState(false);
+  // const [isFollowing, setIsFollowing] = useState(false);
 
-  const toggleFollow = () => {
-    // TODO: API isteği ekle
-    setIsFollowing(prev => !prev);
-  };
+  // const toggleFollow = () => {
+  //   // TODO: API isteği ekle
+  //   setIsFollowing(prev => !prev);
+  // };
+  const isFollowing = false;
 
   return (
     <main className="max-w-4xl mx-auto p-6 space-y-12">
@@ -94,14 +89,14 @@ export default function CommunityDetailPage({ params }: Props) {
       <section className="flex items-center space-x-6">
         <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-blue-400 to-purple-500 overflow-hidden">
           <img
-            src={`https://i.pravatar.cc/150?u=${params.id}`}
+            src={`https://i.pravatar.cc/150?u=${id}`}
             alt="Community Avatar"
             className="w-full h-full object-cover"
           />
         </div>
         <div className="flex-1">
           <h1 className="text-4xl font-semibold text-gray-900 capitalize">
-            {params.id} Topluluğu
+            {id} Topluluğu
           </h1>
           <p className="text-lg text-gray-600 mt-2">
             Bu topluluk, güncel paylaşımlar ve tartışmalar için oluşturuldu.
@@ -112,14 +107,14 @@ export default function CommunityDetailPage({ params }: Props) {
             </span>
             {isAdmin ? (
               <Link
-                href={`/community/${params.id}/add-post`}
+                href={`/community/${id}/add-post`}
                 className="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition"
               >
                 Yeni Gönderi
               </Link>
             ) : (
               <button
-                onClick={toggleFollow}
+                // onClick={toggleFollow}
                 className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-gray-100 transition"
               >
                 {isFollowing ? (
@@ -140,7 +135,7 @@ export default function CommunityDetailPage({ params }: Props) {
           {posts.map((post) => (
             <Link
               key={post.id}
-              href={`/community/${params.id}/post/${post.id}`}
+              href={`/community/${id}/post/${post.id}`}
               className="block bg-white rounded-2xl shadow-md hover:shadow-lg transition overflow-hidden"
             >
               <div className="flex items-center p-4 space-x-4 border-b border-gray-100">
