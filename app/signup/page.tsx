@@ -7,6 +7,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { tags } from "@/app/lib/definitions";
 import { toast }from "sonner";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [interests, setInterests] = useState<string[]>([]);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,14 +80,23 @@ export default function SignUpPage() {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
-          />
-
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
+            />
+            <button
+              type="button"
+              title={showPassword ? "Hide password" : "Show password"}
+              onClick={() => setShowPassword(prev => !prev)}
+              className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600 hover:text-gray-900 focus:outline-none"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
           {/* Interest Section */}
           <div className="mt-6">
             <p className="text-lg font-semibold text-gray-700 mb-4">What are you interested in?</p>
