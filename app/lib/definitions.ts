@@ -1,6 +1,7 @@
 // Backend icin daha rahat olacaksa tipler ayarlanabilir
 
 export type postCard = {
+  postId: number;
   owner_username: string;
   owner_name: string;
   owner_image_url: string;
@@ -11,10 +12,15 @@ export type postCard = {
   comments: number;
 };
 
-export type Post = {
-  post_id: string;
-  user_id: string;
-  content: string;
+export type Socials = {
+  isLiked: boolean;
+  isFollowed: boolean;
+}
+
+export type Comment = {
+  authorUsername: string,
+  authorProfilePic: string,
+  content: string,
 }
 
 export type User = {
