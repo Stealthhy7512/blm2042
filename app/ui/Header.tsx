@@ -2,11 +2,10 @@
 
 import Link from "next/link"
 import { Star, Users } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import ProfileNav from "@/app/ui/profile-nav"
 import SearchBar from "@/app/ui/search-bar"
 
-export default function Header({ isAuthenticated }: { isAuthenticated: boolean }) {
+export default function Header() {
     
     return (
         <header className="transition-shadow duration-300 hover:shadow-gray-300 w-full flex items-center justify-between px-6 py-4 bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200 sticky top-0 z-50">
@@ -18,27 +17,12 @@ export default function Header({ isAuthenticated }: { isAuthenticated: boolean }
             <SearchBar />
             {/* Profile Menu */}
             <nav className="flex items-center space-x-6 ml-auto">
-                {isAuthenticated ? (
-                  <div className="flex items-center space-x-4">
-                    <Link href="/community">
-                        <Users className="hover:w-7 hover:h-7 w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
-                    </Link>
-                    <ProfileNav />
-                  </div>
-                ) : (
-                    <>
-                        <Link href="/signin">
-                            <Button variant="outline" className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-all duration-300">
-                                Sign In
-                            </Button>
-                        </Link>
-                        <Link href="/signup">
-                            <Button className="px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300">
-                                Sign Up
-                            </Button>
-                        </Link>
-                    </>
-                )}
+              <div className="flex items-center space-x-4">
+                <Link href="/community">
+                    <Users className="hover:w-7 hover:h-7 w-6 h-6 text-gray-700 hover:text-blue-600 transition-all duration-300" />
+                </Link>
+                <ProfileNav />
+              </div>
             </nav>
         </header>
     )
