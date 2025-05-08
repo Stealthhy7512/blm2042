@@ -58,7 +58,7 @@ export default function SignUpPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-3">
       <div className="bg-white p-8 shadow-lg rounded-xl w-full max-w-md">
         <h2 className="text-2xl font-semibold text-blue-600 mb-8 text-center">Create Account</h2>
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6" autoComplete="off" autoCorrect="off" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Username"
@@ -88,14 +88,16 @@ export default function SignUpPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
             />
-            <button
-              type="button"
-              title={showPassword ? "Hide password" : "Show password"}
-              onClick={() => setShowPassword(prev => !prev)}
-              className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600 hover:text-gray-900 focus:outline-none"
-            >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-            </button>
+            {password && (
+              <button
+                type="button"
+                title={showPassword ? "Hide password" : "Show password"}
+                onClick={() => setShowPassword(prev => !prev)}
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600 hover:text-gray-900 focus:outline-none"
+              >
+                {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
+              </button>
+            )}
           </div>
           {/* Interest Section */}
           <div className="mt-6">

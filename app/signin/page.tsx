@@ -60,7 +60,7 @@ export default function SignInPage() {
       <div className="bg-white p-8 shadow-lg rounded-xl w-full max-w-sm">
         <h2 className="text-2xl font-semibold text-blue-600 mb-6 text-center">Sign In</h2>
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6" autoCorrect="off" onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
@@ -81,14 +81,16 @@ export default function SignInPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             />
-            <button
-            type="button"
-            title={showPassword ? "Hide password" : "Show password"}
-            onClick={() => setShowPassword(prev => !prev)}
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600 hover:text-gray-900 focus:outline-none"
-            >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-            </button>
+            {password && (
+              <button
+                type="button"
+                title={showPassword ? "Hide password" : "Show password"}
+                onClick={() => setShowPassword(prev => !prev)}
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600 hover:text-gray-900 focus:outline-none"
+              >
+                {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
+              </button>
+            )}
           </div>
 
           <Button type="submit" className="w-full py-3 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors">
