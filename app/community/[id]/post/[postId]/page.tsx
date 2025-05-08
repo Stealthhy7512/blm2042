@@ -48,10 +48,9 @@ const allComments: Record<string, Comment[]> = {
   ],
 };
 
-type Props = { params: { id: string; postId: string } };
+export default async function PostPage(props: { params: Promise<{ id: string, postId: string }> }) {
+  const { id, postId } = await props.params;
 
-export default function PostPage({ params }: Props) {
-  const { id, postId } = params;
   const post = allPosts[id]?.find(p => p.id === postId);
   if (!post) return notFound();
   const comments = allComments[postId] ?? [];
