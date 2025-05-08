@@ -11,6 +11,7 @@ CREATE TABLE users (
     visible_name VARCHAR(255),
     username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    bio TEXT,
     user_password VARCHAR(255) NOT NULL,
     profile_photo_id INTEGER REFERENCES media(media_id),
     banner_photo_id INTEGER REFERENCES media(media_id),
@@ -68,6 +69,7 @@ CREATE TABLE post_like (
 CREATE TABLE community (
     community_id SERIAL PRIMARY KEY,
     community_name VARCHAR(255) NOT NULL,
+    community_description TEXT NOT NULL,
     media_id INTEGER REFERENCES media(media_id)
 );
 
