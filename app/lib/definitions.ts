@@ -10,12 +10,9 @@ export type postCard = {
   date: string;
   likes: number;
   comments: number;
-};
-
-export type Socials = {
   isLiked: boolean;
   isFollowed: boolean;
-}
+};
 
 export type Comment = {
   authorUsername: string,
