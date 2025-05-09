@@ -4,14 +4,27 @@ import { HeartIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { Toggle } from "@/components/ui/toggle";
 
-export default function LikeButton({ likes, isLiked }: { likes: number, isLiked: boolean }) {
+export default function LikeButton({ postId, likes, isLiked }: { postId: number; likes: number; isLiked: boolean }) {
   const [likeCount, setLikeCount] = useState(likes);
-  const [pressed, setPressed] = useState(isLiked); // Beğenme durumu
+  const [pressed, setPressed] = useState(isLiked);
 
-  // Butona tıklanma işlevi
   function handleClick(pressed: boolean) {
-    setPressed(pressed);
-    setLikeCount(pressed ? likeCount + 1 : likeCount - 1); // Beğeni sayısını güncelle
+    setPressed(prev => !prev);
+    setLikeCount(pressed ? likeCount + 1 : likeCount - 1);
+
+    if (pressed) {
+      fetch(`/api/post/${postId}/like`, {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify({ postId }),
+      });
+    } else {
+      fetch(`/api/post/${postId}/unlike`, {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify({ postId }),
+      });
+    }
   }
 
   return (
