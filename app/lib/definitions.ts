@@ -26,9 +26,7 @@ export type User = {
   postNumber: number;
   following: number;
   followers: number;
-  // Optional fallback
   profilePic: string;
-  // Optional fallback
   banner: string;
   isCurrentUser?: boolean;
 }
