@@ -1,6 +1,6 @@
 'use client';
 
-import { postCard, Socials, Comment } from '@/app/lib/definitions';
+import { postCard, Comment } from '@/app/lib/definitions';
 import {
   Dialog,
   DialogContent,
@@ -26,7 +26,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
-export function PostCard({ Post, Socials }: { Post: postCard, Socials: Socials } ) {
+export function PostCard({ Post }: { Post: postCard } ) {
   const postId = Post.postId;
 
   const [comments, setComments] = useState<Comment[]>([]);
@@ -70,7 +70,7 @@ export function PostCard({ Post, Socials }: { Post: postCard, Socials: Socials }
                       {Post.owner_name}
                     </Link>
                     <div onClick={(e) => e.stopPropagation()}>
-                      <FollowButton username={Post.owner_username} isFollow={Socials.isFollowed} />
+                      <FollowButton username={Post.owner_username} isFollow={Post.isFollowed} />
                     </div>
                   </div>
                 </CardTitle>
@@ -100,7 +100,7 @@ export function PostCard({ Post, Socials }: { Post: postCard, Socials: Socials }
                       <CalendarIcon className='w-5' /> {Post.date}
                     </div>
                     <div className="flex flex-row justify-end gap-1" onClick={(e) => e.stopPropagation()}>
-                      <LikeButton likes={Post.likes} isLiked={Socials.isLiked} />
+                      <LikeButton postId={Post.postId} likes={Post.likes} isLiked={Post.isLiked} />
                       <CommentButton comments={Post.comments} />
                       <ShareButton postId={Post.postId} />
                     </div>
@@ -140,7 +140,7 @@ export function PostCard({ Post, Socials }: { Post: postCard, Socials: Socials }
 
                     {Post.owner_name}
                   </Link>
-                  <FollowButton username={Post.owner_username} isFollow={Socials.isFollowed} />
+                  <FollowButton username={Post.owner_username} isFollow={Post.isFollowed} />
                 </div>
                 <p className="text-sm">{Post.message}</p>
                 <div className="flex justify-start text-sm text-muted-foreground gap-3 mt-2">
