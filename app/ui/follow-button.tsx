@@ -2,7 +2,7 @@
 
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // TODO: Add `isFollowing` as a parameter if backend supplies isFollowing while fetching posts.
 export default function FollowButton({ username, isFollow }: { username: string, isFollow: boolean }) {
@@ -10,9 +10,7 @@ export default function FollowButton({ username, isFollow }: { username: string,
 
   const [isFollowing, setIsFollowing] = useState(isFollow);
 
-  function handleClick() {
-    setIsFollowing(!isFollowing);
-
+  useEffect(() => {
     if (isFollowing) {
       fetch(`/api/user/${owner_username}/follow`, {
         method: 'POST',
@@ -26,6 +24,10 @@ export default function FollowButton({ username, isFollow }: { username: string,
         body: JSON.stringify({owner_username}),
       });
     }
+  }, [isFollowing, owner_username]);
+
+  function handleClick() {
+    setIsFollowing(prev => !prev);
   }
 
   return (

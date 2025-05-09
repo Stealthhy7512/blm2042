@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { MinusCircle } from "lucide-react";
-import { useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function BlockButton({ username }: { username: string }) {
   const owner_username = username;
@@ -19,9 +19,7 @@ export default function BlockButton({ username }: { username: string }) {
   //   });
   // }, []);
 
-  function handleClick() {
-    setIsBlocked(!isBlocked);
-
+  useEffect(() => {
     if (isBlocked) {
       fetch(`/api/user/${owner_username}/block`, {
         method: 'POST',
@@ -35,6 +33,10 @@ export default function BlockButton({ username }: { username: string }) {
         body: JSON.stringify({ owner_username }),
       });
     }
+  }, [isBlocked, owner_username]);
+
+  function handleClick() {
+    setIsBlocked(prev => !prev);
   }
 
   return (
