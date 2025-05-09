@@ -1,12 +1,10 @@
 import BlockButton from "@/app/ui/block-button";
 import FollowButton from "@/app/ui/follow-button";
-import Link from "next/link";
 import { User } from "@/app/lib/definitions"
 
 export default function ProfileHeader({ user }: { user: User }) {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mx-auto max-w-3xl">
-      {/* Banner */}
       <div
         className="h-48 bg-gray-300 relative rounded-t-lg"
         style={{
@@ -15,7 +13,6 @@ export default function ProfileHeader({ user }: { user: User }) {
           backgroundPosition: "center",
         }}
       >
-        {/* Profil fotoğrafı */}
         <div className="absolute bottom-[-40px] left-4 transition-all duration-300 hover:scale-110">
           <img
             src={user.profilePic}
@@ -25,7 +22,6 @@ export default function ProfileHeader({ user }: { user: User }) {
         </div>
       </div>
 
-      {/* Bilgiler */}
       <div className="pt-20 px-4 pb-4">
         <div className="flex justify-between items-start">
           <div>
@@ -33,31 +29,16 @@ export default function ProfileHeader({ user }: { user: User }) {
             <p className="text-sm text-gray-600">@{user.username}</p>
           </div>
 
-          {/* Butonlar */}
           <div className="flex gap-2">
-            {user.isCurrentUser ? (
+            {!user.isCurrentUser && (
               <>
-                <Link href="/settings">
-                  <button className="px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-gray-200 transition">
-                    Ayarlar
-                  </button>
-                </Link>
-                <Link href="/add-post">
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition">
-                    Yeni Gönderi
-                  </button>
-                </Link>
-              </>
-            ) : (
-              <>
-                <FollowButton username={user.username} />
+                <FollowButton username={user.username} isFollow={false} />
                 <BlockButton username={user.username} />
               </>
             )}
           </div>
         </div>
 
-        {/* Sayaçlar */}
         <div className="mt-6 flex justify-around text-center">
           <div className="transition-all duration-75 hover:scale-125">
             <p className="text-lg font-bold ">{user.postNumber}</p>

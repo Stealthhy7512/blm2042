@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { Search } from "lucide-react"
 import Link from "next/link"
 
@@ -9,7 +9,7 @@ export default function SearchBar() {
     const [searchResults, setSearchResults] = useState<string[]>([])
     const [showSearchResults, setShowSearchResults] = useState(false)
 
-
+    // TODO: Implement searchParams and send to backend.
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const term = e.target.value
         setSearchTerm(term)
@@ -34,10 +34,10 @@ export default function SearchBar() {
                     <Search className="w-4 h-4 text-gray-500 mr-2" />
                     <input
                     type="text"
-                    placeholder="Ara..."
+                    placeholder="Search..."
                     value={searchTerm}
                     onChange={handleSearch}
-                    className="w-full bg-transparent focus:text-black text-gray-600 focus:outline-none text-sm"
+                    className="w-full bg-transparent focus:text-black text-muted-foreground focus:outline-none text-sm"
                     />
                 </div>
 

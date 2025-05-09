@@ -29,7 +29,7 @@ export default function ProfileNav() {
         </button>   
 
     {dropdownOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-md rounded-md z-50">
+        <div className="absolute right-0 mt-2 w-50 bg-white border border-gray-200 shadow-md rounded-md z-50">
             <ViewProfileButton />
 
             <Link href="/add-post" className="px-4 py-2 hover:bg-gray-100 flex items-center">
