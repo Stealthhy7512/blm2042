@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fabf5b16-a90d-4d05-b047-23d3837a87a5" name="Changes" comment="Further organizing.">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/SocialApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/CommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/CommunityController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/MediaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/PostController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/SearchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommentCreateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommentResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommunityCreateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommunityResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/PostCreateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/PostResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserProfileDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserRegisterDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserSummary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserUpdateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Community.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/CommunityPost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Media.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/UserCommunity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/UserPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/CommentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/MediaFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/PostMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserProfileMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserRegisterMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CommentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CommunityPostRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CommunityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/MediaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/PostRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/UserCommunityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/CommunityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/MyUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/PostService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/SearchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/sas/social/SocialApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.idea/blm2042.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/add-post/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/add-post/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/communityPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/post/[postId]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/community/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/create-community/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/globals.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/lib/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/lib/data.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/lib/definitions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/post/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/post/[id]/postPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/settings/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/signin/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/signup/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/add-post.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/block-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/comment-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/create-comment.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/create-community-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/filter-panel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/follow-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/fonts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/like-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/logout-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/post-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/profile-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/profile-settings-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/profileHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/search-bar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/share-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/ui/view-profile-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/user/[owner_username]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/app/user/[owner_username]/userPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/checkbox.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/collapsible.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/dialog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/dropdown-menu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/textarea.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/toggle-group.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/ui/toggle.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/lib/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pnpm-lock.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/postcss.config.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/customers/amy-burns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/customers/balazs-orban.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/customers/delba-de-oliveira.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/customers/evil-rabbit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/customers/lee-robinson.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/customers/michael-novotny.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/file.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/globe.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/graph.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/next.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/user-circle-svgrepo-com.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/vercel.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/window.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Stealthhy7512" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="1b120c206df8397d48af0b368a5281c98245bdab" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Stealthhy7512&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Stealthhy7512/blm2042.git&quot;,
+    &quot;accountId&quot;: &quot;7bcb00d7-997c-4b98-a6dc-91562b42788d&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2toXvVwZ0vzgknRGzRWpiHroWE1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/kaany/Desktop/Web/blm2042/app/ui",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.sourceCode.JSON",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kaany\Desktop\Web\blm2042\" />
+      <recent name="C:\Users\kaany\Desktop\Web\blm2042\app\ui" />
+      <recent name="C:\Users\kaany\Desktop\Web\blm2042\app\user" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.25659.40" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fabf5b16-a90d-4d05-b047-23d3837a87a5" name="Changes" comment="" />
+      <created>1741019631591</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741019631591</updated>
+      <workItem from="1741019632595" duration="12539000" />
+      <workItem from="1741040069286" duration="29000" />
+      <workItem from="1741097692873" duration="7011000" />
+      <workItem from="1741440725382" duration="13263000" />
+      <workItem from="1745254327485" duration="6237000" />
+      <workItem from="1745526070042" duration="1334000" />
+      <workItem from="1745586497217" duration="203000" />
+      <workItem from="1745702686068" duration="568000" />
+      <workItem from="1745763268878" duration="27333000" />
+      <workItem from="1746218469303" duration="38508000" />
+      <workItem from="1746556758320" duration="64324000" />
+      <workItem from="1746743462303" duration="101000" />
+      <workItem from="1746787725108" duration="42175000" />
+      <workItem from="1746890106909" duration="316000" />
+    </task>
+    <task id="LOCAL-00021" summary="Implement sign in.">
+      <option name="closed" value="true" />
+      <created>1746571965509</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1746571965509</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Implement logout button, small changes.">
+      <option name="closed" value="true" />
+      <created>1746574824992</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1746574824992</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fix getting id.">
+      <option name="closed" value="true" />
+      <created>1746575700836</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1746575700836</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Small changes.">
+      <option name="closed" value="true" />
+      <created>1746576478128</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1746576478128</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Implement user page api handling.">
+      <option name="closed" value="true" />
+      <created>1746651746947</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1746651746947</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Implement View Profile button functionality.">
+      <option name="closed" value="true" />
+      <created>1746651808347</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1746651808347</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Insert ViewProfileButton component.">
+      <option name="closed" value="true" />
+      <created>1746651859014</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1746651859014</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add middleware for redirecting unauthorized users. Implement reverse proxy to pass client cookies to server middleware. Replace fetch routes according to reverse proxy rewrite.">
+      <option name="closed" value="true" />
+      <created>1746654913365</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1746654913365</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Better responsiveness.">
+      <option name="closed" value="true" />
+      <created>1746662222937</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1746662222937</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Change component parameters according to Next standards.">
+      <option name="closed" value="true" />
+      <created>1746662965808</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1746662965808</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Change component parameters according to Next standards cont.">
+      <option name="closed" value="true" />
+      <created>1746663127185</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1746663127185</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Small middleware fix.">
+      <option name="closed" value="true" />
+      <created>1746709055787</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1746709055787</updated>
+    </task>
+    <task id="LOCAL-00033" summary="UX enhancement with browser autofill to sign in page.">
+      <option name="closed" value="true" />
+      <created>1746709328404</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1746709328404</updated>
+    </task>
+    <task id="LOCAL-00034" summary="UX enhancement with show password in sign in and signup pages.">
+      <option name="closed" value="true" />
+      <created>1746710530970</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1746710530970</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Modify toaster behavior. Remove isAuthenticated prop from header.">
+      <option name="closed" value="true" />
+      <created>1746711530684</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1746711530684</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Small UI enhancements.">
+      <option name="closed" value="true" />
+      <created>1746712111686</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1746712111686</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Implement posting and fetching comments.">
+      <option name="closed" value="true" />
+      <created>1746736768599</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746736768599</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Implement fully functional follow, like, share buttons.">
+      <option name="closed" value="true" />
+      <created>1746736888753</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1746736888753</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Delete unused .js files.">
+      <option name="closed" value="true" />
+      <created>1746736913529</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1746736913529</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Add types Socials and Comment. Add column postId to type postCard.">
+      <option name="closed" value="true" />
+      <created>1746737001925</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1746737001925</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Update PostCard. User page now fetches user info and posts with comments. Add fallback user icon svg.">
+      <option name="closed" value="true" />
+      <created>1746737073080</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1746737073081</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Small api routing fix on ViewProfile.">
+      <option name="closed" value="true" />
+      <created>1746737131542</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1746737131542</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Implement updating profile settings. Backend rejects images.">
+      <option name="closed" value="true" />
+      <created>1746740990344</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1746740990344</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Implement add post functionality. Backend rejects image.">
+      <option name="closed" value="true" />
+      <created>1746741023493</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1746741023493</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Share button UI enhancement.">
+      <option name="closed" value="true" />
+      <created>1746743208918</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1746743208918</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Update postCard type by migrating Socials.">
+      <option name="closed" value="true" />
+      <created>1746809251448</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1746809251448</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Implement postPage.">
+      <option name="closed" value="true" />
+      <created>1746809318640</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1746809318640</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Small button fixes.">
+      <option name="closed" value="true" />
+      <created>1746825692491</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1746825692491</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Add checking if viewed profile is session user's. Clean up homepage.">
+      <option name="closed" value="true" />
+      <created>1746825805531</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1746825805531</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Fix component props.">
+      <option name="closed" value="true" />
+      <created>1746825868338</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1746825868339</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Minor styling changes.">
+      <option name="closed" value="true" />
+      <created>1746825937636</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1746825937637</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Follow and block button fix. Needs corrected backend route.">
+      <option name="closed" value="true" />
+      <created>1746827072573</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1746827072573</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Update user page and post card.">
+      <option name="closed" value="true" />
+      <created>1746838652399</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1746838652399</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Update profile settings form.">
+      <option name="closed" value="true" />
+      <created>1746838683092</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1746838683092</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Update block and follow buttons with initial state.">
+      <option name="closed" value="true" />
+      <created>1746838761031</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1746838761031</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Create community and add post forms.">
+      <option name="closed" value="true" />
+      <created>1746838793636</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1746838793636</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Update postCard, Comment and User type, create Community type">
+      <option name="closed" value="true" />
+      <created>1746838836869</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1746838836869</updated>
+    </task>
+    <task id="LOCAL-00058" summary="PostCards display images correctly.">
+      <option name="closed" value="true" />
+      <created>1746868444434</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1746868444434</updated>
+    </task>
+    <task id="LOCAL-00059" summary="User page displays bio, images.">
+      <option name="closed" value="true" />
+      <created>1746869519921</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1746869519921</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Search bar functionality update, waiting endpoint.">
+      <option name="closed" value="true" />
+      <created>1746875802619</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1746875802619</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Add isJoined column to Community type. Style community/page.tsx">
+      <option name="closed" value="true" />
+      <created>1746877398795</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1746877398795</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Small visual and syntactic tweaks.">
+      <option name="closed" value="true" />
+      <created>1746877431822</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1746877431822</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Add URL slugify and de-slugify functions.">
+      <option name="closed" value="true" />
+      <created>1746882586564</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1746882586565</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Community pages complete.">
+      <option name="closed" value="true" />
+      <created>1746882620934</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1746882620934</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Implement feed, community page, search bar.">
+      <option name="closed" value="true" />
+      <created>1746888560661</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1746888560661</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Minor refactoring.">
+      <option name="closed" value="true" />
+      <created>1746888579218</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1746888579218</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Search bar wrapped in Suspense.">
+      <option name="closed" value="true" />
+      <created>1746888831162</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1746888831162</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Infinite scroll added.">
+      <option name="closed" value="true" />
+      <created>1746889538797</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1746889538797</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Add backend code, folder and organize frontend and backend code.">
+      <option name="closed" value="true" />
+      <created>1746890157687</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1746890157687</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="8f410fdb-c759-4220-915a-6b02301435a2" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="8f410fdb-c759-4220-915a-6b02301435a2">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update postCard type by migrating Socials." />
+    <MESSAGE value="Implement postPage." />
+    <MESSAGE value="Small button fixes." />
+    <MESSAGE value="Add checking if viewed profile is session user's. Clean up homepage." />
+    <MESSAGE value="Fix component props." />
+    <MESSAGE value="Minor styling changes." />
+    <MESSAGE value="Follow and block button fix. Needs corrected backend route." />
+    <MESSAGE value="Update user page and post card." />
+    <MESSAGE value="Update profile settings form." />
+    <MESSAGE value="Update block and follow buttons with initial state." />
+    <MESSAGE value="Create community and add post forms." />
+    <MESSAGE value="Update postCard, Comment and User type, create Community type" />
+    <MESSAGE value="PostCards display images correctly." />
+    <MESSAGE value="User page displays bio, images." />
+    <MESSAGE value="Search bar functionality update, waiting endpoint." />
+    <MESSAGE value="Add isJoined column to Community type. Style community/page.tsx" />
+    <MESSAGE value="Small visual and syntactic tweaks." />
+    <MESSAGE value="Add URL slugify and de-slugify functions." />
+    <MESSAGE value="Community pages complete." />
+    <MESSAGE value="Implement feed, community page, search bar." />
+    <MESSAGE value="Minor refactoring." />
+    <MESSAGE value="Search bar wrapped in Suspense." />
+    <MESSAGE value="Infinite scroll added." />
+    <MESSAGE value="Add backend code, folder and organize frontend and backend code." />
+    <MESSAGE value="Further organizing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Further organizing." />
+  </component>
+</project>
