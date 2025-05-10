@@ -4,19 +4,25 @@ import { PostCard } from "@/app/ui/post-card";
 import { postCard } from "@/app/lib/definitions";
 import { useState, useEffect } from 'react';
 
-
 export default function Home() {
   const [posts, setPosts] = useState<postCard[]>([]);
+  const [offset, setOffset] = useState(0);
+  const size = 10;
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetch(`/api/user/post-feed`, {
-      method: 'GET',
-      credentials: 'include',
-    }).then(async res => {
+  const fetchPosts = async () => {
+    if (loading || !hasMore) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/user/post-feed?offset=${offset}&size=${size}`, {
+        method: 'GET',
+        credentials: 'include',
+      });
       const data = await res.json();
 
       if (res.ok) {
-        const parsedPosts: postCard[] = data.content.map((post: any) => ({
+        const newPosts: postCard[] = data.content.map((post: any) => ({
           postId: post.postId,
           owner_username: post.userSummary.username,
           owner_name: post.userSummary.visibleName,
@@ -29,20 +35,53 @@ export default function Home() {
           isFollowed: post.isPostAuthorFollowed,
           date: post.createdAt,
         }));
-        setPosts(parsedPosts);
+
+        setPosts(prev => [...prev, ...newPosts]);
+        setOffset(prev => prev + size);
+        setHasMore(!data.last);
       }
-    });
+    } catch (err) {
+      console.error("Failed to fetch posts", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+
+      if (nearBottom) {
+        fetchPosts();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, hasMore]);
+
   return (
-    <main className="min-h-screen min-w-screen bg-gray-50 px-6 py-10 flex flex-col md:flex-row mx-auto items-center justify-center gap-10">
+    <main className="min-h-screen bg-gray-50 px-6 py-10 flex flex-col items-center gap-10">
       <section className="w-full">
-        <div className="w-full flex flex-col items-center gap-y-[64px] justify-center text-black mt-4">
+        <div className="w-full flex flex-col items-center gap-y-[64px] text-black">
           {posts.map((post: postCard, index: number) => (
             <div key={index} className="w-full max-w-xl">
               <PostCard Post={post} />
             </div>
           ))}
+
+          {loading && (
+            <div className="mt-4 text-gray-600">Loading more posts...</div>
+          )}
+
+          {!hasMore && (
+            <div className="mt-4 text-gray-500">You’ve reached the end.</div>
+          )}
         </div>
       </section>
     </main>

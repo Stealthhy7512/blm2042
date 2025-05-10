@@ -9,6 +9,10 @@ export default function UserPage({ username }: { username: string }) {
   const [user, setUser] = useState<User | null>(null);
   const [id, setId] = useState<number | null>(null);
   const [posts, setPosts] = useState<postCard[]>([]);
+  const [offset, setOffset] = useState(0);
+  const size = 10;
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let sessionUsername: string | null = null;
@@ -28,37 +32,39 @@ export default function UserPage({ username }: { username: string }) {
         credentials: 'include',
       });
     }).then(async res => {
-        const data = await res.json();
+      const data = await res.json();
 
-        setId(data.UserProfileDto.userId);
-        const userData: User = {
-          displayName: data.UserProfileDto.visibleName,
-          username: data.UserProfileDto.username,
-          postNumber: data.UserProfileDto.postNumber,
-          followers: data.UserProfileDto.followerNumber,
-          following: data.UserProfileDto.followingNumber,
-          isCurrentUser: sessionUsername === data.UserProfileDto.username,
-          profilePicId: data.UserProfileDto.profilePhotoId,
-          bannerId: data.UserProfileDto.bannerPhotoId,
-          isFollowed: data.isFollowing,
-          isBlocked: data.isBlocked,
-          bio: data.UserProfileDto.bio,
-        };
-        setUser(userData);
-        console.log(userData);
+      const userId = data.UserProfileDto.userId;
+      setId(userId);
+      const userData: User = {
+        displayName: data.UserProfileDto.visibleName,
+        username: data.UserProfileDto.username,
+        postNumber: data.UserProfileDto.postNumber,
+        followers: data.UserProfileDto.followerNumber,
+        following: data.UserProfileDto.followingNumber,
+        isCurrentUser: sessionUsername === data.UserProfileDto.username,
+        profilePicId: data.UserProfileDto.profilePhotoId,
+        bannerId: data.UserProfileDto.bannerPhotoId,
+        isFollowed: data.isFollowing,
+        isBlocked: data.isBlocked,
+        bio: data.UserProfileDto.bio,
+      };
+      setUser(userData);
+    });
+  }, [username]);
+
+  const fetchPosts = async () => {
+    if (loading || !hasMore || id === null) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/post/${id}/posts?offset=${offset}&size=${size}`, {
+        method: 'GET',
+        credentials: 'include',
       });
-    }, [username]);
-
-  useEffect(() => {
-    console.log(id);
-    fetch(`/api/post/${id}/posts`, {
-      method: 'GET',
-      credentials: 'include',
-    }).then(async res => {
       const data = await res.json();
 
       if (res.ok) {
-        const parsedPosts: postCard[] = data.content.map((post: any) => ({
+        const newPosts: postCard[] = data.content.map((post: any) => ({
           postId: post.postId,
           owner_username: post.userSummary.username,
           owner_name: post.userSummary.visibleName,
@@ -71,20 +77,44 @@ export default function UserPage({ username }: { username: string }) {
           isFollowed: post.isPostAuthorFollowed,
           date: post.createdAt,
         }));
-        setPosts(parsedPosts);
+
+        setPosts(prev => [...prev, ...newPosts]);
+        setOffset(prev => prev + size);
+        setHasMore(!data.last);
       }
-    });
+    } catch (err) {
+      console.error("Failed to fetch posts", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
   }, [id]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+      if (nearBottom) {
+        fetchPosts();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, hasMore]);
 
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen p-4">
       <div className="mx-auto">
         {user && <ProfileHeader user={user} />}
-
         <div className="flex items-center flex-col gap-y-[64px] justify-center text-black mt-4">
           {posts.map((post: postCard, index: number) => (
             <PostCard Post={post} key={index} />
           ))}
+          {loading && <div className="mt-4 text-gray-600">Loading more posts...</div>}
+          {!hasMore && <div className="mt-4 text-gray-500">You’ve reached the end.</div>}
         </div>
       </div>
     </div>

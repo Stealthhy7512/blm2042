@@ -9,61 +9,91 @@ export default function CommunityPage({ id }: { id: string }) {
   const [communityDescription, setCommunityDescription] = useState<string>('');
   const [communityImage, setCommunityImage] = useState<string | null>(null);
   const [posts, setPosts] = useState<postCard[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [offset, setOffset] = useState(0);
+  const size = 10;
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCommunityData = async () => {
       setLoading(true);
       setError(null);
 
-      fetch(`/api/community/all`)
-        .then((res) => res.json())
-        .then((data) => {
-          const community = data.find((c: any) => c.communityName.trim() === id);
-          if (community) {
-            setCommunityDescription(community.communityDescription);
-            if (community.mediaId) {
-              fetch(`/api/media/${community.mediaId}`)
-                .then((res) => res.blob())
-                .then((blob) => {
-                  const url = URL.createObjectURL(blob);
-                  setCommunityImage(url);
-                })
-                .catch(() => setError('Unable to load community image.'));
-            }
-          }
-        })
-        .catch(() => setError('Failed to load community info.'));
+      try {
+        const res = await fetch(`/api/community/all`);
+        const data = await res.json();
 
-      fetch(`/api/community/${id}/posts`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.content) {
-            const parsed: postCard[] = data.content.map((post: any) => ({
-              postId: post.postId,
-              owner_username: post.userSummary.username,
-              owner_name: post.userSummary.visibleName,
-              owner_image_url: post.userSummary.profilePhoto,
-              content_image_url: post.postImage,
-              message: post.content,
-              likes: post.numberOfPostLike,
-              comments: post.numberOfPostComment,
-              isLiked: post.isPostLiked,
-              isFollowed: post.isPostAuthorFollowed,
-              date: post.createdAt,
-            }));
-            setPosts(parsed);
+        const community = data.find((c: any) => c.communityName.trim() === id);
+        if (community) {
+          setCommunityDescription(community.communityDescription);
+          if (community.mediaId) {
+            const mediaRes = await fetch(`/api/media/${community.mediaId}`);
+            const blob = await mediaRes.blob();
+            const url = URL.createObjectURL(blob);
+            setCommunityImage(url);
           }
-        })
-        .catch(() => setError('Failed to load posts.'))
-        .finally(() => setLoading(false));
+        }
+      } catch {
+        setError('Failed to load community info.');
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchData();
+    fetchCommunityData();
   }, [id]);
 
-  if (loading) {
+  const fetchPosts = async () => {
+    if (loading || !hasMore) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/community/${id}/posts?offset=${offset}&size=${size}`);
+      const data = await res.json();
+
+      if (res.ok) {
+        const newPosts: postCard[] = data.content.map((post: any) => ({
+          postId: post.postId,
+          owner_username: post.userSummary.username,
+          owner_name: post.userSummary.visibleName,
+          owner_image_url: post.userSummary.profilePhoto,
+          content_image_url: post.postImage,
+          message: post.content,
+          likes: post.numberOfPostLike,
+          comments: post.numberOfPostComment,
+          isLiked: post.isPostLiked,
+          isFollowed: post.isPostAuthorFollowed,
+          date: post.createdAt,
+        }));
+
+        setPosts(prev => [...prev, ...newPosts]);
+        setOffset(prev => prev + size);
+        setHasMore(!data.last);
+      }
+    } catch {
+      setError('Failed to load posts.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, [id]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+      if (nearBottom) {
+        fetchPosts();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, hasMore]);
+
+  if (loading && !communityDescription) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <p className="text-lg text-gray-600">Loading...</p>
@@ -81,7 +111,6 @@ export default function CommunityPage({ id }: { id: string }) {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-8 space-y-12">
-      {/* Header */}
       <section className="flex items-center space-x-6 bg-white shadow-md p-6 rounded-xl">
         <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-300">
           {communityImage ? (
@@ -102,7 +131,6 @@ export default function CommunityPage({ id }: { id: string }) {
         </div>
       </section>
 
-      {/* Posts */}
       <section>
         <h2 className="text-3xl font-semibold text-blue-500 mb-6">Latest Posts</h2>
         <div className="grid gap-10">
@@ -114,6 +142,14 @@ export default function CommunityPage({ id }: { id: string }) {
             <p className="text-gray-500 text-center">No posts yet.</p>
           )}
         </div>
+
+        {loading && (
+          <div className="mt-4 text-gray-600 text-center">Loading more posts...</div>
+        )}
+
+        {!hasMore && (
+          <div className="mt-4 text-gray-500 text-center">You’ve reached the end.</div>
+        )}
       </section>
     </main>
   );
