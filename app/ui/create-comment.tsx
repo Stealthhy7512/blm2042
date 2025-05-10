@@ -49,6 +49,7 @@ export default function CreateComment({
           authorUsername: username,
           authorProfilePic: nullUser,
           content: text,
+          date: new Date(),
         };
         onCommentPosted(newComment);
         setText('');
