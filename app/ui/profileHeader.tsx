@@ -8,14 +8,14 @@ export default function ProfileHeader({ user }: { user: User }) {
       <div
         className="h-48 bg-gray-300 relative rounded-t-lg"
         style={{
-          backgroundImage: `url(${user.banner})`,
+          backgroundImage: `url(${user.bannerId})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <div className="absolute bottom-[-40px] left-4 transition-all duration-300 hover:scale-110">
           <img
-            src={user.profilePic}
+            src={user.profilePicId}
             alt="Profile"
             className="w-28 h-28 rounded-full border-4 border-white object-cover shadow-md"
           />
@@ -32,8 +32,8 @@ export default function ProfileHeader({ user }: { user: User }) {
           <div className="flex gap-2">
             {!user.isCurrentUser && (
               <>
-                <FollowButton username={user.username} isFollow={false} />
-                <BlockButton username={user.username} />
+                <FollowButton username={user.username} isFollow={user.isFollowed} />
+                <BlockButton username={user.username} isBlock={user.isBlocked} />
               </>
             )}
           </div>

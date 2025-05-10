@@ -23,29 +23,32 @@ export default function UserPage({ username }: { username: string }) {
         return sessionUsername;
       }
     }).then(() => {
-      return fetch(`/api/user/username/${username}`, {
+      return fetch(`/api/user/${username}/profile`, {
         method: "GET",
         credentials: 'include',
       });
     }).then(async res => {
         const data = await res.json();
 
-        setId(data.userId);
+        setId(data.UserProfileDto.userId);
         const userData: User = {
-          displayName: data.visibleName,
-          username: data.username,
-          postNumber: data.postNumber,
-          followers: data.followerNumber,
-          following: data.followingNumber,
-          isCurrentUser: sessionUsername === data.username,
-          profilePic: data.profilePhoto,
-          banner: data.bannerPhoto,
+          displayName: data.UserProfileDto.visibleName,
+          username: data.UserProfileDto.username,
+          postNumber: data.UserProfileDto.postNumber,
+          followers: data.UserProfileDto.followerNumber,
+          following: data.UserProfileDto.followingNumber,
+          isCurrentUser: sessionUsername === data.UserProfileDto.username,
+          profilePicId: data.UserProfileDto.profilePhotoId,
+          bannerId: data.UserProfileDto.bannerPhotoId,
+          isFollowed: data.isFollowing,
+          isBlocked: data.isBlocked,
         };
         setUser(userData);
       });
     }, [username]);
 
   useEffect(() => {
+    console.log(id);
     fetch(`/api/post/${id}/posts`, {
       method: 'GET',
       credentials: 'include',
@@ -64,6 +67,7 @@ export default function UserPage({ username }: { username: string }) {
           comments: post.numberOfPostComment,
           isLiked: post.isPostLiked,
           isFollowed: post.isPostAuthorFollowed,
+          date: post.createdAt,
         }));
         setPosts(parsedPosts);
       }

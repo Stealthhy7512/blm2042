@@ -25,7 +25,6 @@ import CreateComment from '@/app/ui/create-comment';
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-
 export function PostCard({ Post }: { Post: postCard } ) {
   const postId = Post.postId;
 
@@ -39,11 +38,12 @@ export function PostCard({ Post }: { Post: postCard } ) {
       const data = await res.json();
 
       if (res.ok) {
-        const parsedComments: Comment[] = data.map((comment: any) => ({
+        const parsedComments = data.map((comment: any) => ({
           authorUsername: comment.userSummary.username,
           authorProfilePic: comment.userSummary.profilePhoto,
           content: comment.text,
-        }));
+          date: comment.createdAt,
+        })) as Comment[];
         setComments(parsedComments);
         console.log(parsedComments);
       }
@@ -96,8 +96,8 @@ export function PostCard({ Post }: { Post: postCard } ) {
                   )}
 
                   <div className="flex justify-between items-center mx-1">
-                    <div className="flex justify-start text-muted-foreground gap-3">
-                      <CalendarIcon className='w-5' /> {Post.date}
+                    <div className="flex justify-start text-muted-foreground gap-3 text-sm">
+                      <CalendarIcon className='w-5' /> {String(Post.date).split('T')[0]}
                     </div>
                     <div className="flex flex-row justify-end gap-1" onClick={(e) => e.stopPropagation()}>
                       <LikeButton postId={Post.postId} likes={Post.likes} isLiked={Post.isLiked} />
@@ -144,7 +144,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                 </div>
                 <p className="text-sm">{Post.message}</p>
                 <div className="flex justify-start text-sm text-muted-foreground gap-3 mt-2">
-                  <CalendarIcon className='w-4' /> {Post.date}
+                  <CalendarIcon className='w-4' /> {String(Post.date).split('T')[0]}
                 </div>
               </div>
 
@@ -161,7 +161,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                       height={36}
                       alt={`${comment.authorUsername}'s profile picture`}
                     />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col flex-grow">
                       <Link
                         href={`/${comment.authorUsername}`}
                         className="font-semibold hover:underline text-sm text-black"
@@ -169,6 +169,10 @@ export function PostCard({ Post }: { Post: postCard } ) {
                         {comment.authorUsername}
                       </Link>
                       <p className="text-sm text-gray-700">{comment.content}</p>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground self-end">
+                      <CalendarIcon className="w-4 h-4 " />
+                      <p>{String(comment.date).split('T')[0]}</p>
                     </div>
                   </div>
                 ))}
