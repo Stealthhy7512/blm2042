@@ -3,30 +3,36 @@
 import React, { useState } from "react"
 import { Search } from "lucide-react"
 import Link from "next/link"
+import { useDebouncedCallback } from 'use-debounce';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
 export default function SearchBar() {
-    const [searchTerm, setSearchTerm] = useState("")
-    const [searchResults, setSearchResults] = useState<string[]>([])
-    const [showSearchResults, setShowSearchResults] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState<string[]>([]);
+    const [showSearchResults, setShowSearchResults] = useState(false);
 
-    // TODO: Implement searchParams and send to backend.
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const term = e.target.value
-        setSearchTerm(term)
+    const searchParams = useSearchParams();
+    const pathName = usePathname();
+    const router = useRouter();
 
-        // TODO: Fetch users from the server
-        const denemeKullanici = ["kaanyazici", "goksel1andonly", "omerakb"]
-
-        if (term.length > 0) {
-            const filtered = denemeKullanici.filter((username) =>
-            username.toLowerCase().includes(term.toLowerCase()))
-            setSearchResults(filtered)
-            setShowSearchResults(true)
+    const handleSearch = useDebouncedCallback((term) => {
+        const params = new URLSearchParams(searchParams);
+        if (term) {
+            params.set('search', term);
         } else {
-            setSearchResults([])
-            setShowSearchResults(false)
+            params.delete('search');
         }
-    }
+        router.replace(`${pathName}?${String(params)}`);
+
+        if (term.trim()) {
+            fetch(`/api/search/${term}`, {
+                credentials: 'include',
+            }).then(async res => {
+                const users = await res.json();
+                console.log(users);
+            });
+        }
+    }, 300);
     return (
         <div className="flex-1 flex justify-center mx-2">
             <div className="relative w-full max-w-md">
@@ -36,7 +42,11 @@ export default function SearchBar() {
                     type="text"
                     placeholder="Search..."
                     value={searchTerm}
-                    onChange={handleSearch}
+                    onChange={(e) => {
+                        const term = e.target.value;
+                        setSearchTerm(term);
+                        handleSearch(term);
+                    }}
                     className="w-full bg-transparent focus:text-black text-muted-foreground focus:outline-none text-sm"
                     />
                 </div>
