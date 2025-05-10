@@ -26,6 +26,7 @@ export type Community = {
   name: string,
   description: string,
   imageId: string,
+  isJoined: boolean,
 }
 
 export type User = {
