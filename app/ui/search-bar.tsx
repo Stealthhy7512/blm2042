@@ -15,7 +15,7 @@ export default function SearchBar() {
     const pathName = usePathname();
     const router = useRouter();
 
-    const handleSearch = useDebouncedCallback((term) => {
+    const handleSearch = useDebouncedCallback((term: string): void => {
         const params = new URLSearchParams(searchParams);
         if (term) {
             params.set('search', term);

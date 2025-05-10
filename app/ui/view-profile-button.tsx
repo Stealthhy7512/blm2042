@@ -18,7 +18,7 @@ export default function ViewProfile() {
   }
 
   return (
-    <button onClick={handleClick} className="px-4 py-2 hover:bg-gray-100 flex items-center">
+    <button onClick={handleClick} className="w-full px-4 py-2 hover:bg-gray-100 flex items-center">
       <User className="w-4 h-4 mr-2" />View Profile
     </button>
   );
