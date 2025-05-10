@@ -6,6 +6,7 @@ import { tags } from "@/app/lib/definitions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Checkbox } from '@/components/ui/checkbox';
+
 export default function PostForm() {
   const router = useRouter();
 
@@ -41,31 +42,27 @@ export default function PostForm() {
     formData.append("homepageVisible", String(homepageVisible));
     image && formData.append("postImage", image);
     message && formData.append("title", message);
-    formData.append("postCategories", JSON.stringify(tags));
+    formData.append("postCategories", JSON.stringify(selectedTags));
 
     const res = await fetch("/api/post/create", {
-      method: "POST",
+      method: 'POST',
+      credentials: 'include',
       body: formData
     });
 
     if (res.ok) {
-      // Gönderim başarılıysa
-      toast.success("Gönderi başarıyla oluşturuldu!", {
+      toast.success("Posted successfully!", {
         description: selectedTags.length > 0
-          ? `Etiketler: ${selectedTags.join(", ")}`
-          : "Etiket seçilmedi.",
+          ? `Tags: ${selectedTags.join(", ")}`
+          : "No tag chosen.",
       });
+      setHomepageVisible(false);
+      setMessage("");
+      setImage(null);
+      setSelectedTags([]);
 
       router.push('/');
     }
-
-    switch (res.status) {
-    }
-
-    setHomepageVisible(false);
-    setMessage("");
-    setImage(null);
-    setSelectedTags([]);
   };
 
   return (

@@ -1,28 +1,40 @@
 'use client';
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 
 export default function CommunityForm() {
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
     const [image, setImage] = useState<File | null>(null);
 
     const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    if (!name.trim() || !description.trim()) {
-        toast.error("Topluluk ismi ve açıklaması zorunludur.");
-        return;
-    }
+        if (!name.trim() || !description.trim()) {
+            toast.error("Community name and description are required.");
+            return;
+        }
 
-    // TODO: Backend'e gönderme ve kullancıyı oluşan topluluk sayfasına yönlendirme
-    toast.success(`Topluluk "${name}" başarıyla oluşturuldu!`);
+        const formData = new FormData();
+        formData.append("communityName", name);
+        formData.append("communityDescription", description);
+        image && formData.append("communityPhoto", image);
 
-    // Formu temizle
-    setName("");
-    setDescription("");
-    setImage(null);
+        fetch(`/api/community/create`, {
+            method: 'POST',
+            credentials: 'include',
+            body: formData,
+        }).then(async res => {
+            if (res.ok) {
+                toast.success(`Community "${name}" created successfully!`);
+                setName("");
+                setDescription("");
+                setImage(null);
+            } else {
+                toast.error('Error creating community!');
+            }
+        })
     };
     
     return (
@@ -32,7 +44,7 @@ export default function CommunityForm() {
         >
             <input
                 type="text"
-                placeholder="Topluluk ismi"
+                placeholder="Community name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
@@ -40,7 +52,7 @@ export default function CommunityForm() {
             />
 
             <textarea
-                placeholder="Topluluk açıklaması"
+                placeholder="Community description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
@@ -48,7 +60,8 @@ export default function CommunityForm() {
                 required
             />
 
-            <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
+                Community banner
                 <input
                     type="file"
                     accept="image/*"
@@ -66,7 +79,7 @@ export default function CommunityForm() {
                 type="submit"
                 className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-all text-sm"
                 >
-                Topluluğu Oluştur
+                Create community
             </button>
         </form>
     );
