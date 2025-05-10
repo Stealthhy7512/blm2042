@@ -2,32 +2,23 @@
 
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // TODO: Add `isFollowing` as a parameter if backend supplies isFollowing while fetching posts.
 export default function FollowButton({ username, isFollow }: { username: string, isFollow: boolean }) {
-  const owner_username = username;
-
   const [isFollowing, setIsFollowing] = useState(isFollow);
 
-  useEffect(() => {
-    if (isFollowing) {
-      fetch(`/api/user/${owner_username}/follow`, {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify({owner_username}),
-      });
-    } else {
-      fetch(`/api/user/${owner_username}/unfollow`, {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify({owner_username}),
-      });
-    }
-  }, [isFollowing, owner_username]);
+  async function handleClick() {
+    const newState = !isFollowing;
+    setIsFollowing(newState);
 
-  function handleClick() {
-    setIsFollowing(prev => !prev);
+    const endpoint = newState ? 'follow' : 'unfollow';
+
+    await fetch(`/api/user/${username}/${endpoint}`, {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify({ owner_username: username }),
+    });
   }
 
   return (

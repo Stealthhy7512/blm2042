@@ -2,41 +2,22 @@
 
 import { Button } from "@/components/ui/button";
 import { MinusCircle } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function BlockButton({ username }: { username: string }) {
-  const owner_username = username;
+export default function BlockButton({ username, isBlock }: { username: string; isBlock: boolean }) {
+  const [isBlocked, setIsBlocked] = useState(isBlock);
 
-  const [isBlocked, setIsBlocked] = useState(false);
+  async function handleClick() {
+    const newState = !isBlocked;
+    setIsBlocked(newState);
 
-  // FIXME: Blocked status should be fetched and initial state should be updated according to that.
-  // useEffect(() => {
-  //   fetch(`http://localhost:8080/user/`).then(async res => {
-  //     const data = await res.json();
-  //     if (res.ok) {
-  //       setIsBlocked(data.isBlocked);
-  //     }
-  //   });
-  // }, []);
+    const endpoint = newState ? 'block' : 'unblock';
 
-  useEffect(() => {
-    if (isBlocked) {
-      fetch(`/api/user/${owner_username}/block`, {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify({ owner_username }),
-      });
-    } else {
-      fetch(`/api/user/${owner_username}/unblock`, {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify({ owner_username }),
-      });
-    }
-  }, [isBlocked, owner_username]);
-
-  function handleClick() {
-    setIsBlocked(prev => !prev);
+    await fetch(`/api/user/${username}/${endpoint}`, {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify({ owner_username: username }),
+    });
   }
 
   return (
