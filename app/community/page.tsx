@@ -4,10 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from 'react';
 import { Community } from '@/app/lib/definitions'
 import clsx from 'clsx';
-
-function slugify(name: string): string {
-  return encodeURIComponent(name.trim());
-}
+import { slugify } from '@/app/lib/actions';
 
 export default function CommunityPage() {
   const [communities, setCommunities] = useState<Community[]>([]);
