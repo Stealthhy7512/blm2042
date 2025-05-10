@@ -5,7 +5,6 @@ import { Search } from "lucide-react"
 import Link from "next/link"
 import { useDebouncedCallback } from 'use-debounce';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import nullUser from '@/public/user-circle-svgrepo-com.svg';
 
 type searchedUser = {
     username: string,
@@ -82,7 +81,7 @@ export default function SearchBar() {
                       searchResults.map((user) => {
                           const imageSrc = user.profilePicId && profilePics[user.profilePicId]
                             ? profilePics[user.profilePicId]
-                            : nullUser
+                            : '/user-circle-svgrepo-com.svg'
 
                           return (
                             <Link

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Star, Users } from "lucide-react"
 import ProfileNav from "@/app/ui/profile-nav"
 import SearchBar from "@/app/ui/search-bar"
+import { Suspense } from 'react';
 
 export default function Header() {
     
@@ -13,9 +14,9 @@ export default function Header() {
                 <Star className="text-blue-600 w-6 h-6" />
                 <h1 className=" font-bold text-blue-700 hidden sm:block">YildizNet</h1>
             </Link>
-            {/* Search Bar */}
+          <Suspense fallback={<div>Loading search...</div>}>
             <SearchBar />
-            {/* Profile Menu */}
+          </Suspense>
             <nav className="flex items-center space-x-6 ml-auto">
               <div className="flex items-center space-x-4">
                 <Link href="/community">
