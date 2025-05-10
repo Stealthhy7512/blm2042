@@ -29,6 +29,8 @@ export function PostCard({ Post }: { Post: postCard } ) {
   const postId = Post.postId;
 
   const [comments, setComments] = useState<Comment[]>([]);
+  const [ownerImageUrl, setOwnerImageUrl] = useState<string | null>(null);
+  const [contentImageUrl, setContentImageUrl] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(`/api/post/${postId}/comments`, {
@@ -45,10 +47,33 @@ export function PostCard({ Post }: { Post: postCard } ) {
           date: comment.createdAt,
         })) as Comment[];
         setComments(parsedComments);
-        console.log(parsedComments);
       }
-    })
-  }, []);
+    });
+
+    // Fetch owner image if the id exists
+    if (Post.owner_image_url) {
+      fetch(`http://localhost:8080/media/${Post.owner_image_url}`, {
+        credentials: 'include',
+      })
+        .then(res => res.blob())
+        .then(blob => {
+          const url = URL.createObjectURL(blob);
+          setOwnerImageUrl(url);
+        });
+    }
+
+    // Fetch content image if the id exists
+    if (Post.content_image_url) {
+      fetch(`http://localhost:8080/media/${Post.content_image_url}`, {
+        credentials: 'include',
+      })
+        .then(res => res.blob())
+        .then(blob => {
+          const url = URL.createObjectURL(blob);
+          setContentImageUrl(url);
+        });
+    }
+  }, [Post.owner_image_url, Post.content_image_url, postId]);
 
 
   return (
@@ -62,7 +87,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                   <div className='flex items-center w-full justify-between gap-3 px-1.5'>
                     <Link href={`/user/${Post.owner_username}`} className='flex flex-row items-center gap-1.5' onClick={(e) => e.stopPropagation()}>
                       <Image
-                        src={Post.owner_image_url ?? nullUser}
+                        src={ownerImageUrl ?? nullUser}
                         className="mr-2 rounded-full"
                         width={48}
                         height={48}
@@ -82,10 +107,10 @@ export function PostCard({ Post }: { Post: postCard } ) {
                     {Post.message ?? ''}
                   </p>
 
-                  {Post.content_image_url && (
+                  {contentImageUrl && (
                     <div className="w-full max-w-[500px] mx-auto">
                       <Image
-                        src={Post.content_image_url}
+                        src={contentImageUrl}
                         alt="post image"
                         width={500}
                         height={500}
@@ -116,9 +141,9 @@ export function PostCard({ Post }: { Post: postCard } ) {
           <div className="flex flex-col md:flex-row w-full h-[90vh] overflow-hidden">
 
             <div className="flex justify-center items-center md:w-auto">
-              {Post.content_image_url && (
+              {contentImageUrl && (
                 <Image
-                  src={Post.content_image_url}
+                  src={contentImageUrl}
                   alt="post image"
                   width={500}
                   height={500}
@@ -132,7 +157,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                 <div className="flex items-center justify-between gap-3 mb-2 pr-10">
                   <Link href={`/${Post.owner_username}`} className='flex flex-row items-center gap-1.5 text-lg font-bold'>
                     <Image
-                      src={Post.owner_image_url ?? nullUser}
+                      src={ownerImageUrl ?? nullUser}
                       className="mr-2 rounded-full"
                       width={48}
                       height={48}

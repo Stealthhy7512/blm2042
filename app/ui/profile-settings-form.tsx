@@ -51,8 +51,8 @@ export default function ProfileSettingsForm() {
     Object.entries(validatedData).forEach(([key, value]) => {
       value && formData.append(key, value);
     });
-    profilePic && formData.append('profilePic', profilePic);
-    banner && formData.append('banner', banner);
+    profilePic && formData.append('profilePhoto', profilePic);
+    banner && formData.append('bannerPhoto', banner);
 
     fetch('/api/user/update', {
       method: 'PATCH',
