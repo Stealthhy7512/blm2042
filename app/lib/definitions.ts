@@ -39,6 +39,7 @@ export type User = {
   isCurrentUser?: boolean;
   isFollowed: boolean;
   isBlocked: boolean;
+  bio?: string;
 };
 
 export const tags: string[] = ['Technology', 'Sports', 'Gaming', 'Music', 'Art', 'Photography', 'Animals', 'Learning'];

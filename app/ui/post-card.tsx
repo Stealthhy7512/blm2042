@@ -52,7 +52,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
 
     // Fetch owner image if the id exists
     if (Post.owner_image_url) {
-      fetch(`http://localhost:8080/media/${Post.owner_image_url}`, {
+      fetch(`/api/media/${Post.owner_image_url}`, {
         credentials: 'include',
       })
         .then(res => res.blob())
@@ -64,7 +64,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
 
     // Fetch content image if the id exists
     if (Post.content_image_url) {
-      fetch(`http://localhost:8080/media/${Post.content_image_url}`, {
+      fetch(`/api/media/${Post.content_image_url}`, {
         credentials: 'include',
       })
         .then(res => res.blob())

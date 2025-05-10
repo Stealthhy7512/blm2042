@@ -42,8 +42,10 @@ export default function UserPage({ username }: { username: string }) {
           bannerId: data.UserProfileDto.bannerPhotoId,
           isFollowed: data.isFollowing,
           isBlocked: data.isBlocked,
+          bio: data.UserProfileDto.bio,
         };
         setUser(userData);
+        console.log(userData);
       });
     }, [username]);
 
@@ -60,8 +62,8 @@ export default function UserPage({ username }: { username: string }) {
           postId: post.postId,
           owner_username: post.userSummary.username,
           owner_name: post.userSummary.visibleName,
-          owner_image_url: post.userSummary.profilePhoto,
-          content_image_url: post.postImage,
+          owner_image_url: post.userSummary.profilePhotoId,
+          content_image_url: post.mediaId,
           message: post.content,
           likes: post.numberOfPostLike,
           comments: post.numberOfPostComment,
