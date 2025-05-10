@@ -5,143 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fabf5b16-a90d-4d05-b047-23d3837a87a5" name="Changes" comment="Further organizing.">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/SocialApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/CommentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/CommunityController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/MediaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/PostController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/SearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommentCreateDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommentResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommunityCreateDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/CommunityResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/PostCreateDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/PostResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserProfileDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserRegisterDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserSummary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/dto/UserUpdateDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Community.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/CommunityPost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Media.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/Post.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/UserCommunity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/entity/UserPrincipal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/CommentMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/MediaFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/PostMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserProfileMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserRegisterMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CommentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CommunityPostRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/CommunityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/MediaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/PostRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/UserCommunityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/CommentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/CommunityService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/MyUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/PostService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/SearchService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/sas/social/SocialApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.idea/blm2042.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/add-post/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/add-post/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/communityPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/community/[id]/post/[postId]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/community/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/create-community/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/lib/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/lib/data.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/lib/definitions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/post/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/post/[id]/postPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/settings/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/signin/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/signup/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/add-post.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/block-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/comment-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/create-comment.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/create-community-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/filter-panel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/follow-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/fonts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/like-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/logout-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/post-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/profile-nav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/profile-settings-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/profileHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/search-bar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/share-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/ui/view-profile-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/user/[owner_username]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/user/[owner_username]/userPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/checkbox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/collapsible.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/dialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/textarea.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/toggle-group.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ui/toggle.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/lib/utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/middleware.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pnpm-lock.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/postcss.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/customers/amy-burns.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/customers/balazs-orban.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/customers/delba-de-oliveira.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/customers/evil-rabbit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/customers/lee-robinson.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/customers/michael-novotny.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/file.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/globe.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/graph.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/next.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/user-circle-svgrepo-com.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/window.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +50,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -207,7 +75,7 @@
     "npm.dev.executor": "Run",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.sourceCode.JSON",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\kaany\\Desktop\\Web\\blm2042\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -220,7 +88,7 @@
   </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
+      <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
@@ -263,15 +131,8 @@
       <workItem from="1746556758320" duration="64324000" />
       <workItem from="1746743462303" duration="101000" />
       <workItem from="1746787725108" duration="42175000" />
-      <workItem from="1746890106909" duration="316000" />
-    </task>
-    <task id="LOCAL-00021" summary="Implement sign in.">
-      <option name="closed" value="true" />
-      <created>1746571965509</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1746571965509</updated>
+      <workItem from="1746890106909" duration="851000" />
+      <workItem from="1746890976568" duration="337000" />
     </task>
     <task id="LOCAL-00022" summary="Implement logout button, small changes.">
       <option name="closed" value="true" />
@@ -657,7 +518,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746890157687</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Further organizing.">
+      <option name="closed" value="true" />
+      <created>1746890544372</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1746890544372</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
