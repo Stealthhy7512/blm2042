@@ -12,6 +12,8 @@ const formSchema = z.object({
 export default function ProfileSettingsForm() {
   const [displayName, setDisplayName] = useState("");
   const [bio, setBio] = useState("");
+  const [profilePicId, setProfilePicId] = useState("");
+  const [bannerId, setBannerId] = useState("");
   const [profilePic, setProfilePic] = useState<File | null>(null);
   const [banner, setBanner] = useState<File | null>(null);
 
@@ -24,8 +26,8 @@ export default function ProfileSettingsForm() {
       if (res.ok) {
         setDisplayName(data.visibleName);
         setBio(data.bio);
-        setProfilePic(data.profilePic);
-        setBanner(data.banner);
+        setProfilePicId(data.profilePic);
+        setBannerId(data.banner);
       }
     })
   }, []);
