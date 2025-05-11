@@ -155,7 +155,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
             <div className="flex flex-col flex-1 min-w-[300px] h-full border-l overflow-hidden bg-white">
               <div className="p-4 pb-2 border-b">
                 <div className="flex items-center justify-between gap-3 mb-2 pr-10">
-                  <Link href={`/${Post.owner_username}`} className='flex flex-row items-center gap-1.5 text-lg font-bold'>
+                  <Link href={`/user/${Post.owner_username}`} className='flex flex-row items-center gap-1.5 text-lg font-bold'>
                     <Image
                       src={ownerImageUrl ?? nullUser}
                       className="mr-2 rounded-full"
@@ -188,7 +188,7 @@ export function PostCard({ Post }: { Post: postCard } ) {
                     />
                     <div className="flex flex-col flex-grow">
                       <Link
-                        href={`/${comment.authorUsername}`}
+                        href={`/user/${comment.authorUsername}`}
                         className="font-semibold hover:underline text-sm text-black"
                       >
                         {comment.authorUsername}
