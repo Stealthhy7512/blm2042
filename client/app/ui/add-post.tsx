@@ -78,7 +78,7 @@ export default function PostForm() {
         rows={3}
       />
 
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex flex-col items-center justify-between gap-2">
         <input
           type="file"
           accept="image/*"
@@ -86,9 +86,13 @@ export default function PostForm() {
           className="file:mr-2 file:py-1 file:px-3 file:rounded-md file:border file:bg-blue-50 file:text-blue-600 text-sm cursor-pointer"
         />
         {image && (
-          <span className="text-xs text-gray-500 truncate max-w-[150px]">
-            {image.name}
-          </span>
+          <div className="mt-4 flex justify-center w-full">
+            <img
+              src={URL.createObjectURL(image)}
+              alt="Profile Preview"
+              className="w-full h-32 object-contain rounded-lg border-2 border-gray-300 shadow-md"
+            />
+          </div>
         )}
       </div>
 

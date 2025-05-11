@@ -25,7 +25,7 @@ export default function ProfileSettingsForm() {
       const data = await res.json();
       if (res.ok) {
         setDisplayName(data.visibleName);
-        setBio(data.bio);
+        setBio(data.bio ?? "");
         setProfilePicId(data.profilePic);
         setBannerId(data.banner);
       }

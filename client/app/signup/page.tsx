@@ -33,6 +33,7 @@ export default function SignUpPage() {
 
     fetch('/api/user/signup', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },
@@ -44,13 +45,12 @@ export default function SignUpPage() {
         userCategories: interests
       }),
     }).then(async res => {
-      const data = await res.json();
-
       if (res.ok) {
         toast.success("Sign up is successfully completed.")
         router.push('/signin');
+      } else {
+        toast.error('Signup failed.');
       }
-      data && toast.error('Signup failed.');
     })
   };
 

@@ -1,12 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 2025-2026 BLM2042 System Analysis and Design Semester Project: Social Media Information System
+
 
 ## Getting Started
 
-- First, set database parameters in `backend/src/main/resources/application.properties`
+- First, run `backend/src/main/java/com.sas.social/SocialApplication`
 
-- Then, run `backend/src/main/java/com.sas.social/SocialApplication`
-
-- Finally, run the development server:
+- Then, run the development server:
 
 ```bash
 npm run dev
