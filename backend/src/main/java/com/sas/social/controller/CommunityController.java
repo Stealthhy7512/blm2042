@@ -61,7 +61,7 @@ public class CommunityController {
 	}
 	
 	@PostMapping("{communityName}/share-post") 
-	public void createCommunityPost(@RequestPart PostCreateDto postDto,
+	public void createCommunityPost(@ModelAttribute PostCreateDto postDto,
 				@RequestPart MultipartFile postImage,
 				@PathVariable String communityName) {
 		

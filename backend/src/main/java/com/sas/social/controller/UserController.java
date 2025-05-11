@@ -142,7 +142,7 @@ public class UserController {
         }
 
         try {
-            userService.follow(followerUsername, followedUsername);
+            userService.unfollow(followerUsername, followedUsername);
             return ResponseEntity.ok().build();
         } catch (NoSuchElementException e) {
         	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This account does not exist.");
