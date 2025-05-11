@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.sas.social.dto.UserRegisterDto;
@@ -17,8 +18,9 @@ public class UserRegisterMapper
 
 	@Autowired
     CategoryRepository categoryRepository;
-	
-	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+	@Autowired
+	private PasswordEncoder encoder;
 	
 	@Override
 	public UserRegisterDto apply(User user) {
@@ -35,15 +37,15 @@ public class UserRegisterMapper
 	}
 
 	public User ToEntity(UserRegisterDto registerDto) {
-		
+
 		return new User(
 				registerDto.visibleName(),
 				registerDto.username(),
 				registerDto.email(),
-				registerDto.password(),
+				encoder.encode( registerDto.password() ),
 				categoryRepository.findAllByCategoryNameIn(
 						registerDto.userCategories())
-				);
+		);
 	}
 	
 }

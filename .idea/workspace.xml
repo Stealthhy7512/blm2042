@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fabf5b16-a90d-4d05-b047-23d3837a87a5" name="Changes" comment="Further organizing.">
+    <list default="true" id="fabf5b16-a90d-4d05-b047-23d3837a87a5" name="Changes" comment="Update config files, move README.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserRegisterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserRegisterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/add-post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/add-post.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/profile-settings-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/profile-settings-form.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,25 +63,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/kaany/Desktop/Web/blm2042/app/ui",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode.JSON",
-    "ts.external.directory.path": "C:\\Users\\kaany\\Desktop\\Web\\blm2042\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kaany/Desktop/Web/blm2042/app/ui&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.JSON&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kaany\\Desktop\\Web\\blm2042\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kaany\Desktop\Web\blm2042\" />
@@ -132,15 +135,8 @@
       <workItem from="1746743462303" duration="101000" />
       <workItem from="1746787725108" duration="42175000" />
       <workItem from="1746890106909" duration="851000" />
-      <workItem from="1746890976568" duration="337000" />
-    </task>
-    <task id="LOCAL-00022" summary="Implement logout button, small changes.">
-      <option name="closed" value="true" />
-      <created>1746574824992</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1746574824992</updated>
+      <workItem from="1746890976568" duration="592000" />
+      <workItem from="1746982912879" duration="4998000" />
     </task>
     <task id="LOCAL-00023" summary="Fix getting id.">
       <option name="closed" value="true" />
@@ -526,7 +522,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746890544372</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Update config files, move README.">
+      <option name="closed" value="true" />
+      <created>1746891486042</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1746891486042</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +576,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update postCard type by migrating Socials." />
     <MESSAGE value="Implement postPage." />
     <MESSAGE value="Small button fixes." />
     <MESSAGE value="Add checking if viewed profile is session user's. Clean up homepage." />
@@ -597,6 +600,7 @@
     <MESSAGE value="Infinite scroll added." />
     <MESSAGE value="Add backend code, folder and organize frontend and backend code." />
     <MESSAGE value="Further organizing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Further organizing." />
+    <MESSAGE value="Update config files, move README." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update config files, move README." />
   </component>
 </project>

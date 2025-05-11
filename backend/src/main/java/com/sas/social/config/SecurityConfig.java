@@ -3,6 +3,7 @@ package com.sas.social.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -81,16 +82,19 @@ public class SecurityConfig {
 	    http
 	        .csrf(csrf -> csrf.disable())
 	        .cors(Customizer.withDefaults())
-	        .authorizeHttpRequests(auth -> auth
-	                .requestMatchers("/signin", "/signup").permitAll()
-	                .anyRequest().authenticated()
-	        )
+				.authorizeHttpRequests(auth -> auth
+						.requestMatchers(HttpMethod.POST, "/signup", "/user/signup").permitAll()
+						.requestMatchers("/signin").permitAll()
+						.anyRequest().authenticated()
+				)
 	        .formLogin(form -> form
 	            .loginProcessingUrl("/signin")
 	            .successHandler(successHandler())
 	            .failureHandler(failureHandler())
 	            .permitAll()
 	        )
+//			.formLogin(Customizer.withDefaults())
+//			.httpBasic(Customizer.withDefaults())
 	        .logout(logout -> logout
 	                .logoutUrl("/logout")
 	                .logoutSuccessHandler((request, response, authentication) -> {
