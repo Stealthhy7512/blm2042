@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fabf5b16-a90d-4d05-b047-23d3837a87a5" name="Changes" comment="Update config files, move README.">
+    <list default="true" id="fabf5b16-a90d-4d05-b047-23d3837a87a5" name="Changes" comment="Update README, minor fixes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserRegisterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/sas/social/mapper/UserRegisterMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/signup/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/add-post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/add-post.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/ui/profile-settings-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/profile-settings-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/ui/create-comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/ui/create-comment.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,15 +130,7 @@
       <workItem from="1746787725108" duration="42175000" />
       <workItem from="1746890106909" duration="851000" />
       <workItem from="1746890976568" duration="592000" />
-      <workItem from="1746982912879" duration="4998000" />
-    </task>
-    <task id="LOCAL-00023" summary="Fix getting id.">
-      <option name="closed" value="true" />
-      <created>1746575700836</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1746575700836</updated>
+      <workItem from="1746982912879" duration="5968000" />
     </task>
     <task id="LOCAL-00024" summary="Small changes.">
       <option name="closed" value="true" />
@@ -530,7 +516,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746891486042</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Update README, minor fixes.">
+      <option name="closed" value="true" />
+      <created>1746988358582</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1746988358583</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +570,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implement postPage." />
     <MESSAGE value="Small button fixes." />
     <MESSAGE value="Add checking if viewed profile is session user's. Clean up homepage." />
     <MESSAGE value="Fix component props." />
@@ -601,6 +594,7 @@
     <MESSAGE value="Add backend code, folder and organize frontend and backend code." />
     <MESSAGE value="Further organizing." />
     <MESSAGE value="Update config files, move README." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update config files, move README." />
+    <MESSAGE value="Update README, minor fixes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README, minor fixes." />
   </component>
 </project>

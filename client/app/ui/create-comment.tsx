@@ -40,7 +40,7 @@ export default function CreateComment({
       },
       body: JSON.stringify({
         postId,
-        username: 'aliyilmaz',
+        username: username,
         text,
       }),
     }).then(async res => {
