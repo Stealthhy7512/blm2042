@@ -78,7 +78,11 @@ export default function UserPage({ username }: { username: string }) {
           date: post.createdAt,
         }));
 
-        setPosts(prev => [...prev, ...newPosts]);
+        setPosts(prev => {
+          const existingIds = new Set(prev.map(p => p.postId));
+          const filtered = newPosts.filter(p => !existingIds.has(p.postId));
+          return [...prev, ...filtered];
+        });
         setOffset(prev => prev + size);
         setHasMore(!data.last);
       }

@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { postCard } from '@/app/lib/definitions';
 import { PostCard } from '@/app/ui/post-card';
-import { deslugify } from '@/app/lib/actions';
+import {deslugify, slugify} from '@/app/lib/actions';
+import Link from 'next/link';
 
 export default function CommunityPage({ id }: { id: string }) {
   const [communityDescription, setCommunityDescription] = useState<string>('');
@@ -24,7 +25,7 @@ export default function CommunityPage({ id }: { id: string }) {
         const res = await fetch(`/api/community/all`);
         const data = await res.json();
 
-        const community = data.find((c: any) => c.communityName.trim() === id);
+        const community = data.find((c: any) => slugify(c.communityName.trim()) === id);
         if (community) {
           setCommunityDescription(community.communityDescription);
           if (community.mediaId) {
@@ -56,8 +57,8 @@ export default function CommunityPage({ id }: { id: string }) {
           postId: post.postId,
           owner_username: post.userSummary.username,
           owner_name: post.userSummary.visibleName,
-          owner_image_url: post.userSummary.profilePhoto,
-          content_image_url: post.postImage,
+          owner_image_url: post.userSummary.profilePhotoId,
+          content_image_url: post.mediaId,
           message: post.content,
           likes: post.numberOfPostLike,
           comments: post.numberOfPostComment,
@@ -66,7 +67,11 @@ export default function CommunityPage({ id }: { id: string }) {
           date: post.createdAt,
         }));
 
-        setPosts(prev => [...prev, ...newPosts]);
+        setPosts(prev => {
+          const existingIds = new Set(prev.map(p => p.postId));
+          const filtered = newPosts.filter(p => !existingIds.has(p.postId));
+          return [...prev, ...filtered];
+        });
         setOffset(prev => prev + size);
         setHasMore(!data.last);
       }
@@ -129,6 +134,12 @@ export default function CommunityPage({ id }: { id: string }) {
           </h1>
           <p className="text-base text-gray-600 mt-2">{communityDescription}</p>
         </div>
+        <Link
+          href={`community/${id}/add-post`}
+          className="w-auto p-1 bg-blue-500 text-blue-100 hover:bg-blue-600 hover:text-white text-center text-sm font-medium py-2 rounded-lg transition"
+        >
+          Create New Post
+        </Link>
       </section>
 
       <section>

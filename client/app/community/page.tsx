@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Community } from '@/app/lib/definitions'
 import clsx from 'clsx';
 import { slugify } from '@/app/lib/actions';
+import { Button } from '@/components/ui/button';
 
 export default function CommunityPage() {
   const [communities, setCommunities] = useState<Community[]>([]);
@@ -54,6 +55,13 @@ export default function CommunityPage() {
     };
   }, [communities]);
 
+  const joinCommunity = (communityName: string) => {
+    fetch(`/api/community/${communityName}/join`, {
+      method: 'POST',
+      credentials: 'include',
+    });
+  }
+
   return (
     <main className="max-w-5xl mx-auto p-6">
       <h1 className="text-4xl font-bold text-blue-600 mb-8">Communities</h1>
@@ -79,7 +87,8 @@ export default function CommunityPage() {
               </div>
             </div>
             <div className="px-6 py-4 bg-gray-50 group-hover:bg-blue-50 transition">
-              <button
+              <Button
+                onClick={() => joinCommunity(slugify(community.name))}
                 className={clsx(
                   "w-full text-center text-sm font-medium py-2 rounded-lg transition",
                   community.isJoined
@@ -88,7 +97,7 @@ export default function CommunityPage() {
                 )}
               >
                 {community.isJoined ? "Enter" : "Join"}
-              </button>
+              </Button>
             </div>
           </Link>
         ))}
