@@ -135,7 +135,7 @@ export default function CommunityPage({ id }: { id: string }) {
           <p className="text-base text-gray-600 mt-2">{communityDescription}</p>
         </div>
         <Link
-          href={`community/${id}/add-post`}
+          href={`/community/${id}/add-post`}
           className="w-auto p-1 bg-blue-500 text-blue-100 hover:bg-blue-600 hover:text-white text-center text-sm font-medium py-2 rounded-lg transition"
         >
           Create New Post
