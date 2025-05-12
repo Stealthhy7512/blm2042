@@ -62,7 +62,7 @@ public class CommunityController {
 	
 	@PostMapping("{communityName}/share-post") 
 	public void createCommunityPost(@ModelAttribute PostCreateDto postDto,
-				@RequestPart MultipartFile postImage,
+				@RequestPart(value = "postImage", required = false) MultipartFile postImage,
 				@PathVariable String communityName) {
 		
 		communityService.createCommunityPost(postDto, communityName);
